@@ -9,7 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title> @vite(['resources/js/app.js', 'resources/css/app.css'])
+    <title>Dashboard</title>
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
 </head>
 
 <body>
