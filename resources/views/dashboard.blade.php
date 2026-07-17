@@ -20,23 +20,40 @@
 </head>
 
 <body>
+    <header class="h-16 bg-white shadow flex items-center justify-between px-6">
 
-    <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
-        type="button"
-        class="text-heading bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base ms-3 mt-3 text-sm p-2 focus:outline-none inline-flex sm:hidden">
-        <span class="sr-only">Open sidebar</span>
-        <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-            fill="none" viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h10" />
-        </svg>
-    </button>
+        <button id="menu-btn" class="p-2 rounded hover:bg-gray-100">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+
+        <h2 class="text-xl font-bold">
+            لوحة التحكم
+        </h2>
+
+    </header>
 
     <aside id="default-sidebar"
-        class="fixed top-0 right-0 z-40 w-64 h-full transition-transform -translate-x-full sm:translate-x-0"
-        aria-label="Sidebar">
+        class="fixed top-0 right-0 z-50 w-64 h-full translate-x-full transition-transform duration-300">
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-800 border-e border-purple-800">
-            <h2 class="text-xl font-bold text-center mb-6 text-white"> اسم الموقع
-            </h2>
+
+            <div class="flex items-center justify-between mb-6">
+
+                <h2 class="text-xl font-bold text-white">
+                    اسم الموقع
+                </h2>
+
+                <button id="close-btn" class="p-2 rounded-lg hover:bg-gray-700 transition-colors text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+
+            </div>
+
             <ul class="space-y-2 font-medium">
                 <li>
                     <a href="#" class="nav-link flex items-center px-2 py-1.5 text-white rounded-base">
@@ -89,7 +106,8 @@
                     <a href="#" class="nav-link flex items-center px-2 py-1.5 text-white rounded-base">
                         <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2"
                                 d="M8 18c0 1.1046-.89543 2-2 2s-2-.8954-2-2 .89543-2 2-2 2 .8954 2 2Zm0 0V6.33333L18 4v11.6667M8 10.3333 18 8m0 8c0 1.1046-.8954 2-2 2s-2-.8954-2-2 .8954-2 2-2 2 .8954 2 2Z" />
                         </svg>
 
@@ -152,134 +170,29 @@
         </div>
     </aside>
 
-    <div class="p-4 sm:mr-64">
-        <div class="p-4 border-1 border-default border-dashed rounded-base">
-            <div class="grid grid-cols-3 gap-4 mb-4">
-                <div class="flex items-center justify-center h-24 rounded-base bg-neutral-secondary-soft">
-                    <p class="text-fg-disabled">
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="M5 12h14m-7 7V5" />
-                        </svg>
-                    </p>
-                </div>
-                <div class="flex items-center justify-center h-24 rounded-base bg-neutral-secondary-soft">
-                    <p class="text-fg-disabled">
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="M5 12h14m-7 7V5" />
-                        </svg>
-                    </p>
-                </div>
-                <div class="flex items-center justify-center h-24 rounded-base bg-neutral-secondary-soft">
-                    <p class="text-fg-disabled">
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="M5 12h14m-7 7V5" />
-                        </svg>
-                    </p>
-                </div>
-            </div>
-            <div class="flex items-center justify-center h-48 rounded-base bg-neutral-secondary-soft mb-4">
-                <p class="text-fg-disabled">
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                        height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M5 12h14m-7 7V5" />
-                    </svg>
-                </p>
-            </div>
-            <div class="grid grid-cols-2 gap-4 mb-4">
-                <div class="flex items-center justify-center h-24 rounded-base bg-neutral-secondary-soft">
-                    <p class="text-fg-disabled">
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="M5 12h14m-7 7V5" />
-                        </svg>
-                    </p>
-                </div>
-                <div class="flex items-center justify-center h-24 rounded-base bg-neutral-secondary-soft">
-                    <p class="text-fg-disabled">
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="M5 12h14m-7 7V5" />
-                        </svg>
-                    </p>
-                </div>
-                <div class="flex items-center justify-center h-24 rounded-base bg-neutral-secondary-soft">
-                    <p class="text-fg-disabled">
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="M5 12h14m-7 7V5" />
-                        </svg>
-                    </p>
-                </div>
-                <div class="flex items-center justify-center h-24 rounded-base bg-neutral-secondary-soft">
-                    <p class="text-fg-disabled">
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="M5 12h14m-7 7V5" />
-                        </svg>
-                    </p>
-                </div>
-            </div>
-            <div class="flex items-center justify-center h-48 rounded-base bg-neutral-secondary-soft mb-4">
-                <p class="text-fg-disabled">
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                        height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M5 12h14m-7 7V5" />
-                    </svg>
-                </p>
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="flex items-center justify-center h-24 rounded-base bg-neutral-secondary-soft">
-                    <p class="text-fg-disabled">
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="M5 12h14m-7 7V5" />
-                        </svg>
-                    </p>
-                </div>
-                <div class="flex items-center justify-center h-24 rounded-base bg-neutral-secondary-soft">
-                    <p class="text-fg-disabled">
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="M5 12h14m-7 7V5" />
-                        </svg>
-                    </p>
-                </div>
-                <div class="flex items-center justify-center h-24 rounded-base bg-neutral-secondary-soft">
-                    <p class="text-fg-disabled">
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="M5 12h14m-7 7V5" />
-                        </svg>
-                    </p>
-                </div>
-                <div class="flex items-center justify-center h-24 rounded-base bg-neutral-secondary-soft">
-                    <p class="text-fg-disabled">
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
-                            height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="M5 12h14m-7 7V5" />
-                        </svg>
-                    </p>
-                </div>
-            </div>
+    <main class="p-6">
+        <div class="grid grid-cols-3 gap-6">
+
+            <div class="bg-white rounded-xl shadow h-40"></div>
+
+            <div class="bg-white rounded-xl shadow h-40"></div>
+
+            <div class="bg-white rounded-xl shadow h-40"></div>
+
         </div>
-    </div>
-    {{--  active --}}
+
+        <div class="grid grid-cols-4 gap-6 mt-6">
+
+            <div class="col-span-2 bg-white rounded-xl shadow h-60"></div>
+
+            <div class="bg-white rounded-xl shadow h-60"></div>
+
+            <div class="bg-white rounded-xl shadow h-60"></div>
+
+        </div>
+
+    </main>
+    {{--  active +Sidebar  --}}
     <script>
         const navLinks = document.querySelectorAll('.nav-link');
 
@@ -293,6 +206,18 @@
                 this.classList.add('active-link');
 
             });
+        });
+
+        const sidebar = document.getElementById("default-sidebar");
+        const menuBtn = document.getElementById("menu-btn");
+        const closeBtn = document.getElementById("close-btn");
+
+        menuBtn.addEventListener("click", () => {
+            sidebar.classList.remove("translate-x-full");
+        });
+
+        closeBtn.addEventListener("click", () => {
+            sidebar.classList.add("translate-x-full");
         });
     </script>
 
