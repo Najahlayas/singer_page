@@ -256,8 +256,7 @@
             </div>
 
 
-            <div
-                class="max-w-sm w-full bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 md:p-6">
+            <div class="bg-white rounded-xl shadow p-6">
                 <div class="flex justify-between items-start">
                     <div>
                         <h5 class="text-2xl font-semibold text-heading">32.4k</h5>
