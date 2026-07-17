@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @vite('resources/css/app.css')
     <title>Login</title>
 </head>
 
@@ -21,25 +22,26 @@
             </svg>
 
             <h1 class="text-2xl font-bold text-gray-800 dark:text-white">
-                Login
+                تسحيل الدخول
             </h1>
         </div>
         <div class="mb-5">
             <label for="email-alternative" class="block mb-2.5 text-sm font-medium text-heading">
-                Your email
+                البريد الإلكتروني
             </label>
+
             <input type="email" id="email-alternative"
                 class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow placeholder:text-body"
-                placeholder="name@flowbite.com" required />
+                placeholder="البريد الإلكتروني" required />
         </div>
 
         <div class="mb-5">
             <label for="password-alternative" class="block mb-2.5 text-sm font-medium text-heading">
-                Your password
+                كلمة المرور
             </label>
             <input type="password" id="password-alternative"
                 class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow placeholder:text-body"
-                placeholder="••••••••" required />
+                placeholder="كلمة المرور" required />
         </div>
 
         <div class="flex items-start mb-5">
@@ -48,13 +50,12 @@
                     class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"
                     required />
                 <p class="ms-2 text-sm font-medium text-heading">
-                    I agree with the <a href="#" class="text-fg-brand hover:underline">terms and
-                        conditions</a>.
+                    أنا أتفق مع <a href="#" class="text-fg-brand hover:underline">الشروط والأحكام</a>.
                 </p>
             </label>
         </div>
         <a href="/dashboard" class="block w-full bg-blue-600 text-white py-3 rounded-lg text-center hover:bg-blue-700">
-            Submit
+            تسحيل الدخول
         </a>
     </form>
 
