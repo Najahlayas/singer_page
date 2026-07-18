@@ -68,16 +68,6 @@
             </div>
         </div>
 
-        <div class="flex items-start mb-5">
-            <label for="remember-alternative" class="flex items-center h-5">
-                <input id="remember-alternative" type="checkbox"
-                    class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"
-                    required />
-                <p class="ms-2 text-sm font-medium text-heading">
-                    أنا أتفق مع <a href="#" class="text-fg-brand hover:underline">الشروط والأحكام</a>.
-                </p>
-            </label>
-        </div>
         <a href="/dashboard" class="block w-full bg-blue-600 text-white py-3 rounded-lg text-center hover:bg-blue-700">
             تسحيل الدخول
         </a>
