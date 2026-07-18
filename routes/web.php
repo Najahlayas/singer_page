@@ -6,9 +6,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/', function () {
-//     return view('pages.login');
-// });
+Route::get('/', function () {
+    return view('pages.login');
+});
 
  Route::get('/dashboard', function () {
      return view('pages.dashboard');

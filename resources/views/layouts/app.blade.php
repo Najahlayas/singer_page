@@ -84,7 +84,7 @@
 class="fixed z-50 top-20 sm:top-0 right-0 sm:z-40 w-64 h-screen transition-transform  sm:translate-x-0" aria-label="Sidebar">
    <div class="h-full px-3 py-4 overflow-y-auto border-s border-default  bg-gray-800 border-e border-purple-800">
     <div class="flex flex-col items-center justify-center mb-5">
-        <img class="w-36 h-36" src="{{ asset('images/logo.png') }}" alt="logo" >
+        <img class="w-36 h-36" src="https://placehold.co/360/purple/white" alt="logo" >
         <h3 class = "text-xl font-bold text-white  p-3">لوحة التحكم</h3>
     </div>
       <ul class="space-y-2 font-medium">
