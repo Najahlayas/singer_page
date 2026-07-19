@@ -10,29 +10,30 @@ Route::redirect('/', '/login');
 Route::view('/login', 'pages.login')->middleware('guest')->name('login');
 Route::post('/login', Login::class)->middleware('guest');
 
- Route::get('/dashboard', function () {
-     return view('pages.dashboard');
- });
+Route::middleware(['auth'])->group(function () {
 
- Route::get('/users', function () {
-     return view('pages.users');
- });
+    Route::get('/dashboard', function () {
+        return view('pages.dashboard');
+    });
 
- Route::get('/roles', function () {
-     return view('pages.roles');
- });
+    Route::get('/users', function () {
+        return view('pages.users');
+    });
 
- Route::get('/permissions', function () {
-     return view('pages.permissions');
- });
+    Route::get('/roles', function () {
+        return view('pages.roles');
+    });
 
- Route::get('/works', function () {
-     return view('pages.works');
- });
+    Route::get('/permissions', function () {
+        return view('pages.permissions');
+    });
 
- Route::get('/news', function () {
-     return view('pages.news');
- });
+    Route::get('/works', function () {
+        return view('pages.works');
+    });
 
-
-  Route::post('/logout', Logout::class)->middleware('auth')->name('logout');
+    Route::get('/news', function () {
+    return view('pages.news');
+    });
+    Route::post('/logout', Logout::class)->name('logout');
+});
