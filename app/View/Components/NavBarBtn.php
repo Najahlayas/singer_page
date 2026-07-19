@@ -21,6 +21,6 @@ class NavBarBtn extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.nav-bar-btn');
+        return view('components.partials.nav-bar-btn');
     }
 }

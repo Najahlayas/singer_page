@@ -1,14 +1,14 @@
 <?php
 
+use App\Http\Controllers\Auth\Login;
+use App\Http\Controllers\Auth\Logout;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/', function () {
-    return view('pages.login');
-});
+Route::redirect('/', '/login');
+
+Route::view('/login', 'pages.login')->middleware('guest')->name('login');
+Route::post('/login', Login::class)->middleware('guest');
 
  Route::get('/dashboard', function () {
      return view('pages.dashboard');
@@ -35,6 +35,4 @@ Route::get('/', function () {
  });
 
 
-  Route::post('/logout', function () {
-     return view('login');
- });
+  Route::post('/logout', Logout::class)->middleware('auth')->name('logout');

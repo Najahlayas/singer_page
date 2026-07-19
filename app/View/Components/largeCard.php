@@ -21,6 +21,6 @@ class largeCard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.large-card');
+        return view('components.partials.large-card');
     }
 }

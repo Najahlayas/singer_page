@@ -117,3 +117,24 @@ if (
     );
     chart.render();
 }
+tailwind.config = {
+    important: true,
+    theme: {
+        extend: {
+            colors: {
+                brand: {
+                    DEFAULT: "#1a56db",
+                    strong: "#1e429f",
+                    medium: "#3f83f8",
+                },
+                heading: "#111827",
+                body: "#6b7280",
+                "neutral-secondary-medium": "#f9fafb",
+                "default-medium": "#d1d5db",
+            },
+            borderRadius: {
+                base: "0.5rem",
+            },
+        },
+    },
+};

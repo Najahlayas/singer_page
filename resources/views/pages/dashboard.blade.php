@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.site-template')
 
 @section('title','Dashboard')
 
@@ -15,7 +15,7 @@
 
 
         {{-- <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-        
+
         </div> --}}
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
@@ -52,7 +52,7 @@
                 12%
             </div>
         </div>
-        
+
         <div id="area-chart" class="py-4"></div>
 
         <div class="flex justify-between items-center border-t pt-4">

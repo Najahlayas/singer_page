@@ -21,6 +21,6 @@ class smallCard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.small-card');
+        return view('components.partials.small-card');
     }
 }

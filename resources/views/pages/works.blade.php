@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.site-template')
 
 
 @section('title','works')

@@ -21,6 +21,6 @@ class newsCard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.news-card');
+        return view('components.partials.news-card');
     }
 }
