@@ -17,3 +17,82 @@ body {
 .active-link {
     background-color: #5d5fef;
 }
+
+.vinyl-card {
+    background: #1e1e24;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 320px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    color: #fff;
+    font-family: "Arial", sans-serif;
+}
+
+.album-art-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.vinyl-record {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle, #222 25%, #000 100%);
+    position: relative;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: transform 0.5s ease;
+}
+
+.vinyl-record.spin {
+    animation: spin 3s linear infinite;
+}
+
+.record-image {
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.record-center {
+    width: 20%;
+    height: 20%;
+    background: #c4c0c0;
+    border-radius: 50%;
+    position: absolute;
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.card-details {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.song-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.artist-name {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    margin: 5px 0 15px;
+}

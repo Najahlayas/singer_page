@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\Auth\Logout;
+use App\Http\Controllers\WorkController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -28,9 +29,11 @@ Route::middleware(['auth'])->group(function () {
         return view('pages.permissions');
     });
 
-    Route::get('/works', function () {
-        return view('pages.works');
-    });
+    // Route::get('/works', function () {
+    //     return view('pages.works');
+    // });
+
+    Route::get('/works', [WorkController::class, 'index']);
 
     Route::get('/news', function () {
     return view('pages.news');
