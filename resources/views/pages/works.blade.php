@@ -5,8 +5,9 @@
 
 @section('content')
 <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+    {{-- btn to add work --}}
     <div class="flex justify-end m-4">
-    <button data-modal-target="add-user-modal" data-modal-toggle="add-user-modal"  type="button" class="inline-flex items-center  text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+    <button data-modal-target="add-work-modal" data-modal-toggle="add-work-modal"  type="button" class="inline-flex items-center  text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
     <svg class="w-4 h-4 me-1.5 -ms-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="64px" height="64px" fill="none" viewBox="0 0 32 32">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 2 L16 30 M2 16 L30 16"/>
     </svg>
@@ -15,7 +16,9 @@
 </span>
 </button>
     </div>
-    <x-layouts.popup-template title="اضافة عمل جديد" id="add-user-modal">
+
+    {{-- popup for adding work --}}
+    <x-layouts.popup-template title="اضافة عمل جديد" id="add-work-modal">
         <form action="{{ route('works.store') }}" method="POST">
             @csrf
             <div class="grid gap-4 grid-cols-2 py-4 md:py-6">
@@ -45,7 +48,7 @@
                         <svg class="w-4 h-4 me-1.5 -ms-0.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/></svg>
                         اضافة
                     </button>
-                    <button data-modal-hide="crud-modal" type="button" class="text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">الغاء</button>
+                    <button data-modal-hide="add-work-modal" type="button" class="text-body bg-neutral-secondary-medium box-border border border-default-medium hover:bg-neutral-tertiary-medium hover:text-heading focus:ring-4 focus:ring-neutral-tertiary shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">الغاء</button>
                 </div>
             </form>
     </x-layouts.popup-template>
@@ -54,7 +57,7 @@
     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
 <div class="grid grid-cols-2 md:grid-cols-3 gap-8 p-4">
     @foreach ($works as $work)
-    <div>
+    <div class="relative">
     <x-partials.vinyl-card :work="$work" />
     </div>
     @endforeach

@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Work;
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Type\Integer;
 
 class WorkController extends Controller
 {
-    public function index()
+    public function show()
     {
-        $works = \App\Models\Work::all();
+        $works = Work::all();
         return view('pages.works', compact('works'));
     }
 
@@ -25,9 +26,22 @@ class WorkController extends Controller
             'audio_url' => 'required',
             // |url',
         ]);
-        // dd($validSong);
 
-        \App\Models\Work::create($validSong);
+        Work::create($validSong);
         return redirect()->back()->with('success', 'تم اضافة العمل بنجاح!');
     }
+
+
+
+    public function update(Request $request )
+{
+    
+    // return redirect('/')->with('success', 'Chirp updated!');
+}
+
+public function destroy(Work $work)
+{
+    $work->delete();
+    return redirect()->back()->with('success', 'تم حذف العمل بنجاح!');
+}
 }

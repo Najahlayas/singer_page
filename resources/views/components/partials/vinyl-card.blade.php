@@ -1,6 +1,5 @@
 {{-- album art, Song image, album title, song title, audio url --}}
 
-
 <div x-data="{ isPlaying: false }"  class="vinyl-card h-auto max-w-full" style="background-image: url('{{ $work->album_art }}'); background-size: cover; background-position: center;">
     <div class="album-art-container">
         <x-dropdown align="right" width='24'>
@@ -16,14 +15,20 @@
     تعديل
 </span>
             </button>
-             <button type="submit" class="w-full text-right px-4 py-2 text-sm text-red-600 hover:bg-gray-100 flex items-center gap-2">
+
+            {{-- <form method="POST" action="{{ route('works.destroy', $work) }}"> --}}
+            {{-- @csrf --}}
+            {{-- @method('DELETE') --}}
+             <button data-modal-target="delete-work-modal-{{ $work->id }}" data-modal-toggle="delete-work-modal-{{ $work->id }}" type="button" class="w-full text-right px-4 py-2 text-sm text-red-600 hover:bg-gray-100 flex items-center gap-2">
                 <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10 11V17" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M14 11V17" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M4 7H20" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M6 7H12H18V18C18 19.6569 16.6569 21 15 21H9C7.34315 21 6 19.6569 6 18V7Z" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                 <span>
                     حذف
                 </span>
             </button>
+            {{-- </form> --}}
     </x-slot>
         </x-dropdown>
+        
         <div class="vinyl-record" :class="isPlaying ? 'spin' : ''">
             <img src="{{ $work->song_image }}" alt="Vinyl Record" class="record-image">
             <div class="record-center"></div>
@@ -39,3 +44,24 @@
             controls src="{{ asset('storage/audio/test-audio.mp3') }}" class="audio-player h-auto max-w-full"></audio>
     </div>
 </div>
+
+
+<x-layouts.popup-template title="هل انت متأكد من حذف هذا العمل؟" id="delete-work-modal-{{ $work->id }}">
+    <div class="w-full flex justify-center items-center space-x-4 border-t border-default pt-4 md:pt-6 gap-3">           
+    <form method="POST" action="{{ route('works.destroy', $work) }}">
+            @csrf
+            @method('DELETE')
+             <button type="submit" class="w-fit text-center px-4 py-2 text-sm text-black hover:text-red-600 border border-default rounded-base  flex items-center hover:bg-red-100 gap-2">
+                <span>
+                    حذف
+                </span>
+            </button>
+            </form>
+            <button data-modal-target="delete-work-modal-{{ $work->id }}" data-modal-hide="delete-work-modal-{{ $work->id }}" type="button" class="w-fit text-center px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center border border-default rounded-base  gap-2">
+                <span>
+                    الغاء
+                </span>
+            </button>
+    </div>
+    </x-layouts.popup-template>
+
