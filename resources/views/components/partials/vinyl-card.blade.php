@@ -9,7 +9,7 @@
             </div>
     </x-slot>
     <x-slot name="content">
-         <button type="submit" class="w-full text-right px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center gap-2">
+         <button data-modal-target="edit-work-modal-{{ $work->id }}" data-modal-toggle="edit-work-modal-{{ $work->id }}" type="button" class="w-full text-right px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center gap-2">
         <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M20.8477 1.87868C19.6761 0.707109 17.7766 0.707105 16.605 1.87868L2.44744 16.0363C2.02864 16.4551 1.74317 16.9885 1.62702 17.5692L1.03995 20.5046C0.760062 21.904 1.9939 23.1379 3.39334 22.858L6.32868 22.2709C6.90945 22.1548 7.44285 21.8693 7.86165 21.4505L22.0192 7.29289C23.1908 6.12132 23.1908 4.22183 22.0192 3.05025L20.8477 1.87868ZM18.0192 3.29289C18.4098 2.90237 19.0429 2.90237 19.4335 3.29289L20.605 4.46447C20.9956 4.85499 20.9956 5.48815 20.605 5.87868L17.9334 8.55027L15.3477 5.96448L18.0192 3.29289ZM13.9334 7.3787L3.86165 17.4505C3.72205 17.5901 3.6269 17.7679 3.58818 17.9615L3.00111 20.8968L5.93645 20.3097C6.13004 20.271 6.30784 20.1759 6.44744 20.0363L16.5192 9.96448L13.9334 7.3787Z" fill="#0F0F0F"></path> </g></svg>
             <span>
     تعديل
@@ -45,23 +45,4 @@
     </div>
 </div>
 
-
-<x-layouts.popup-template title="هل انت متأكد من حذف هذا العمل؟" id="delete-work-modal-{{ $work->id }}">
-    <div class="w-full flex justify-center items-center space-x-4 border-t border-default pt-4 md:pt-6 gap-3">           
-    <form method="POST" action="{{ route('works.destroy', $work) }}">
-            @csrf
-            @method('DELETE')
-             <button type="submit" class="w-fit text-center px-4 py-2 text-sm text-black hover:text-red-600 border border-default rounded-base  flex items-center hover:bg-red-100 gap-2">
-                <span>
-                    حذف
-                </span>
-            </button>
-            </form>
-            <button data-modal-target="delete-work-modal-{{ $work->id }}" data-modal-hide="delete-work-modal-{{ $work->id }}" type="button" class="w-fit text-center px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center border border-default rounded-base  gap-2">
-                <span>
-                    الغاء
-                </span>
-            </button>
-    </div>
-    </x-layouts.popup-template>
 

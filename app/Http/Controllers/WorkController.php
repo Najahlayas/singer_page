@@ -32,11 +32,17 @@ class WorkController extends Controller
     }
 
 
-
-    public function update(Request $request )
+        public function edit (int $id)
 {
-    
-    // return redirect('/')->with('success', 'Chirp updated!');
+    $work = Work::findOrFail($id);
+    return response()->json($work);}
+
+    public function update(Request $request, int $id)
+{
+        $work = Work::findOrFail($id);
+        $data = $request->only(['album_title', 'song_title', 'album_art', 'song_image', 'audio_url']);
+        $work->update($data);
+        return redirect()->back()->with('success', 'تم تحديث العمل بنجاح!');
 }
 
 public function destroy(Work $work)
