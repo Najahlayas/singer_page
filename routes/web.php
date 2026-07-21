@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\Auth\Logout;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\WorkController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,9 +35,10 @@ Route::middleware(['auth'])->group(function () {
     // });
 
 Route::resource('works', WorkController::class);
+Route::resource('news', NewsController::class);
 
-    Route::get('/news', function () {
-    return view('pages.news');
-    });
+    // Route::get('/news', function () {
+    // return view('pages.news');
+    // });
     Route::post('/logout', Logout::class)->name('logout');
 });

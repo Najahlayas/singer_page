@@ -10,6 +10,7 @@
         "Noto Color Emoji";
 }
 
+/* --- Global Styles --- */
 body {
     font-family: "Cairo", sans-serif;
 }
@@ -18,6 +19,7 @@ body {
     background-color: #5d5fef;
 }
 
+/* --- Vinyl Card Container --- */
 .vinyl-card {
     background: #1e1e24;
     border-radius: 15px;
@@ -25,18 +27,22 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* width: 320px; */
     width: 100%;
     max-width: 400px;
+    aspect-ratio: 3 / 4;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     color: #fff;
     font-family: "Arial", sans-serif;
+    overflow: hidden;
+    position: relative;
 }
 
+/* --- Vinyl Record Styles --- */
 .album-art-container {
     position: relative;
     width: 200px;
     height: 200px;
+    flex-shrink: 0;
 }
 
 .vinyl-record {
@@ -50,11 +56,15 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    transition: transform 0.5s ease;
+
+    /* Hardware Acceleration for Smooth Rotation */
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 .vinyl-record.spin {
-    animation: spin 3s linear infinite;
+    /* Using smooth-spin to avoid conflict with hardware acceleration */
+    animation: smooth-spin 3s linear infinite;
 }
 
 .record-image {
@@ -71,8 +81,87 @@ body {
     border-radius: 50%;
     position: absolute;
     border: 2px dashed rgba(255, 255, 255, 0.3);
+    z-index: 2;
 }
 
+/* --- Details & Scrolling Text Logic --- */
+.card-details {
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* The window that clips the moving text */
+.title-window {
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    height: 1.6rem; /* Ensures the lines stay stacked properly */
+}
+
+.song-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.album-name {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    margin-bottom: 8px;
+}
+
+/* Base state for both titles: Ellipsis */
+.song-title,
+.album-name {
+    display: block;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+/* Marquee state applied via Alpine :class when isPlaying is true */
+.title-hover {
+    display: inline-block;
+    width: auto; /* Required for marquee to measure actual text width */
+    overflow: visible;
+    text-overflow: clip;
+    animation: marquee 8s linear infinite;
+    padding-left: 100%; /* Text enters from the right */
+}
+
+/* --- Animations --- */
+
+/* Smooth Rotation using TranslateZ to force GPU */
+@keyframes smooth-spin {
+    0% {
+        transform: rotate(0deg) translateZ(0);
+    }
+    100% {
+        transform: rotate(360deg) translateZ(0);
+    }
+}
+
+/* Horizontal Scroll */
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Standard spin fallback if needed */
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -80,21 +169,4 @@ body {
     100% {
         transform: rotate(360deg);
     }
-}
-
-.card-details {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.song-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin: 0;
-}
-
-.artist-name {
-    font-size: 0.9rem;
-    color: #a0a0a0;
-    margin: 5px 0 15px;
 }

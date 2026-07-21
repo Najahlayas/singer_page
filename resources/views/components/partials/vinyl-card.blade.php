@@ -1,6 +1,6 @@
 {{-- album art, Song image, album title, song title, audio url --}}
 
-<div x-data="{ isPlaying: false }"  class="vinyl-card h-auto max-w-full" style="background-image: url('{{ $work->album_art }}'); background-size: cover; background-position: center;">
+<div x-data="{ isPlaying: false }"  class="vinyl-card  max-w-full" style="background-image: url('{{ $work->album_art }}'); background-size: cover; background-position: center;">
     <div class="album-art-container">
         <x-dropdown align="right" width='24'>
             <x-slot name="trigger">
@@ -35,9 +35,15 @@
         </div>
     </div>
     <div class="card-details">
-        <h3 class="song-title">{{ $work->song_title }}</h3>
-        <p class="album-title">{{ $work->album_title }}</p>
-            <audio
+        <div class="title-window">
+            <h3 title="{{ $work->song_title }}" class="song-title cursor-default" :class="isPlaying ? 'title-hover' : ''">{{ $work->song_title }}</h3>
+        </div>
+
+        <div class="title-window">
+            <p title="{{ $work->album_title }}" class="album-name cursor-default" :class="isPlaying ? 'title-hover' : ''">{{ $work->album_title }}</p>
+        </div>
+
+            <audio 
             @play="isPlaying = true"
             @pause="isPlaying = false"
             @ended="isPlaying = false"

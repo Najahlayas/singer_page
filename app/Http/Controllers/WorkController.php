@@ -8,11 +8,17 @@ use Ramsey\Uuid\Type\Integer;
 
 class WorkController extends Controller
 {
-    public function show()
+    public function index()
     {
         $works = Work::all();
         return view('pages.works', compact('works'));
     }
+
+    // public function show()
+    // {
+    //     $works = Work::all();
+    //     return view('pages.works', compact('works'));
+    // }
 
 // {{-- album art, Song image, album title, song title, audio url --}}
     public function store(Request $request)
