@@ -10,7 +10,6 @@ class Work extends Model
 
     use HasFactory;
     protected $fillable = [
-    // {{-- album art, Song image, album title, song title, audio url --}}
         'album_art',
         'song_image',
         'album_title',

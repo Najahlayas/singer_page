@@ -33,7 +33,7 @@ Route::middleware(['auth'])->group(function () {
     //     return view('pages.works');
     // });
 
-    Route::get('/works', [WorkController::class, 'index']);
+Route::resource('works', WorkController::class);
 
     Route::get('/news', function () {
     return view('pages.news');

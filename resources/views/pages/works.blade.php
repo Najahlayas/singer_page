@@ -16,27 +16,28 @@
 </button>
     </div>
     <x-layouts.popup-template title="اضافة عمل جديد" id="add-user-modal">
-        <form action="#">
-                <div class="grid gap-4 grid-cols-2 py-4 md:py-6">
+        <form action="{{ route('works.store') }}" method="POST">
+            @csrf
+            <div class="grid gap-4 grid-cols-2 py-4 md:py-6">
                     <div class="col-span-2">
-                        <label for="album-title" class="block mb-2.5 text-sm font-medium text-heading">اسم الالبوم</label>
-                        <input type="text" name="album-title" id="album-title" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Type album title" required="">
+                        <label for="album_title" class="block mb-2.5 text-sm font-medium text-heading">اسم الالبوم</label>
+                        <input type="text" name="album_title" id="album_title" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Type album title" required="">
                     </div>
                     <div class="col-span-2 sm:col-span-1">
-                        <label for="song-title" class="block mb-2.5 text-sm font-medium text-heading">اسم الاغنية</label>
-                        <input type="text" name="song-title" id="song-title" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Type song title" required="">
+                        <label for="song_title" class="block mb-2.5 text-sm font-medium text-heading">اسم الاغنية</label>
+                        <input type="text" name="song_title" id="song_title" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Type song title" required="">
                     </div>
                     <div class="col-span-2 sm:col-span-1">
-                        <label for="song-image-url" class="block mb-2.5 text-sm font-medium text-heading">رابط صورة الاغنية</label>
-                        <input type="text" name="song-image-url" id="song-image-url" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Type song image url" required="">
+                        <label for="song_image" class="block mb-2.5 text-sm font-medium text-heading">رابط صورة الاغنية</label>
+                        <input type="text" name="song_image" id="song_image" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Type song image url" required="">
                     </div>
                     <div class="col-span-2 sm:col-span-1">
-                        <label for="album-image-url" class="block mb-2.5 text-sm font-medium text-heading">رابط صورة الالبوم</label>
-                        <input type="text" name="album-image-url" id="album-image-url" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Type album image url" required="">
+                        <label for="album_art" class="block mb-2.5 text-sm font-medium text-heading">رابط صورة الالبوم</label>
+                        <input type="text" name="album_art" id="album_art" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Type album image url" required="">
                     </div>
                     <div class="col-span-2 sm:col-span-1">
-                        <label for="audio-url" class="block mb-2.5 text-sm font-medium text-heading">رابط الاغنية</label>
-                        <input type="text" name="audio-url" id="audio-url" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Type audio url" required="">
+                        <label for="audio_url" class="block mb-2.5 text-sm font-medium text-heading">رابط الاغنية</label>
+                        <input type="text" name="audio_url" id="audio_url" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Type audio url" required="">
                     </div>
 
                     <div class="flex items-center space-x-4 border-t border-default pt-4 md:pt-6 gap-3">
@@ -54,7 +55,7 @@
 <div class="grid grid-cols-2 md:grid-cols-3 gap-8 p-4">
     @foreach ($works as $work)
     <div>
-    <x-partials.vinyl-card :title="$work->song_title" :artist="$work->album_title" :isPlaying="false" />
+    <x-partials.vinyl-card :work="$work" />
     </div>
     @endforeach
     </div>
