@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\Auth\Logout;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermissionController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,17 +19,16 @@ Route::middleware(['auth'])->group(function () {
         return view('pages.dashboard');
     });
 
-    Route::get('/users', function () {
-        return view('pages.users');
-    });
+    Route::resource('users', UserController::class);
+    Route::resource('roles', RoleController::class);
+    Route::resource('permissions', PermissionController::class);
+    // Route::get('/roles', function () {
+    //     return view('pages.roles');
+    // });
 
-    Route::get('/roles', function () {
-        return view('pages.roles');
-    });
-
-    Route::get('/permissions', function () {
-        return view('pages.permissions');
-    });
+    // Route::get('/permissions', function () {
+    //     return view('pages.permissions');
+    // });
 
     Route::get('/works', function () {
         return view('pages.works');
