@@ -352,7 +352,7 @@
 </div>
 <div class="px-4 py-2 bg-gray-50 rounded-b-lg">
     <label for="wysiwyg-example" class="sr-only">Publish post</label>
-    <div id="wysiwyg-example"class="block w-full px-0 text-sm text-body bg-neutral-primary border-0, focus:ring-0"></div>
+    {{-- <div id="wysiwyg-example" class="block w-full px-0 text-sm text-body bg-neutral-primary border-0, focus:ring-0"></div> --}}
 </div>
 </div>
 </div>

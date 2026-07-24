@@ -34,3 +34,7 @@ body {
 .active-link {
     background-color: #5d5fef;
 }
+
+#wysiwyg-example span[style*="font-weight: bold"] {
+    font-weight: bold !important;
+}

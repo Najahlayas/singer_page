@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\NewsArticle;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -30,18 +31,28 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        $validSong = $request->validate([
-            'album_title' => 'required|string|max:255',
-            'song_title' => 'required|string|max:255',
-            'album_art' => 'required|url',
-            'song_image' => 'required|url',
-            'audio_url' => 'required',
-            // |url',
-        ]);
+    // 1. Validate the data
+    $data = $request->validate([
+        'title' => 'required|string|max:255',
+        'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'body'  => 'required|string', // This is the Tiptap content
+    ]);
 
-        News::create($validSong);
-        return redirect()->back()->with('success', 'تم اضافة العمل بنجاح!');
+    // 2. Handle the Image Upload
+    $imagePath = null;
+    if ($request->hasFile('image')) {
+        // Stores in storage/app/public/news
+        $imagePath = $request->file('image')->store('news', 'public');
+        $data['image'] = $imagePath;
+    }
+    else{
+        $data['image'] = 'https://placehold.co/600x400?text=Place\nHolder';
+    }
+
+    // 3. Save to Database
+    NewsArticle::create($data);
+
+    return redirect()->route('news.index')->with('success', 'Article created successfully!');
     }
 
     /**
@@ -49,8 +60,8 @@ class NewsController extends Controller
      */
     public function show()
     {
-        $works = News::all();
-        return view('pages.news', compact('works'));
+        $news = NewsArticle::all();
+        return view('pages.news', compact('news'));
     }
 
     /**
@@ -58,7 +69,7 @@ class NewsController extends Controller
      */
     public function edit (int $id)
 {
-    $news = News::findOrFail($id);
+    $news = NewsArticle::findOrFail($id);
     return response()->json($news);}
 
     /**
@@ -66,19 +77,19 @@ class NewsController extends Controller
      */
     public function update(Request $request, int $id)
 {
-        $news = News::findOrFail($id);
-        $data = $request->only(['album_title', 'song_title', 'album_art', 'song_image', 'audio_url']);
+        $news = NewsArticle::findOrFail($id);
+        $data = $request->only(['image', 'title', 'body']);
         $news->update($data);
-        return redirect()->back()->with('success', 'تم تحديث العمل بنجاح!');
+        return redirect()->back()->with('success', 'تم تحديث الخبر بنجاح!');
 }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(News $news)
+    public function destroy(NewsArticle $news)
 {
     $news->delete();
-    return redirect()->back()->with('success', 'تم حذف العمل بنجاح!');
+    return redirect()->back()->with('success', 'تم حذف الخبر بنجاح!');
 }
 
 

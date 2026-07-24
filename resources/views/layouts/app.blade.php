@@ -27,5 +27,6 @@
     </head>
     <body>
     @yield('page')
+    @stack('scripts')
     </body>
 </html>

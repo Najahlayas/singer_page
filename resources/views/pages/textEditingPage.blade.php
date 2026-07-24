@@ -5,11 +5,16 @@
 
 
 @section('content')
-<form action="{{ route('news.store') }}" method="POST">
+<form id="newsForm" enctype="multipart/form-data" action="{{ route('news.store') }}" method="POST">
     @csrf
 
+<div class="flex flex-col items-start">
+    <input type="file" name="image" class="m-5">
+    <input type="text" name="title" class="m-5 border-2">
+</div>
+
     <!-- Hidden input to store the editor HTML -->
-    <input type="hidden" name="content" id="news-content">
+    <input type="hidden" name="body" id="news-content">
 
     <div class="w-full bg-neutral-secondary-medium border border-default-medium rounded-base">
         <!-- ... (Paste your Toolbar HTML here) ... -->
