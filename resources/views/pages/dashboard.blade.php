@@ -34,9 +34,9 @@
         </x-slot>
 
         <div class="space-y-6">
-            <x-news-card link="#" image="https://placehold.co/40/orange/white" title="هدوء البحر" date="25 مايو 2026" />
-            <x-news-card link="#" image="https://placehold.co/40/green/white" title="تجريد ألوان" date="24 مايو 2026" />
-            <x-news-card link="#" image="https://placehold.co/40/blue/white" title="لحظة تأمل" date="22 مايو 2026" />
+            <x-partials.dashboard-news-card link="#" image="https://placehold.co/40/orange/white" title="هدوء البحر" date="25 مايو 2026" />
+            <x-partials.dashboard-news-card link="#" image="https://placehold.co/40/green/white" title="تجريد ألوان" date="24 مايو 2026" />
+            <x-partials.dashboard-news-card link="#" image="https://placehold.co/40/blue/white" title="لحظة تأمل" date="22 مايو 2026" />
         </div>
     </x-large-card>
 

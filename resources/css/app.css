@@ -1,17 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+@import "flowbite/src/themes/default";
 @import "tailwindcss";
+
+@plugin "flowbite/plugin";
+@plugin "flowbite-typography";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
+@source "../node_modules/flowbite";
 
 @theme {
-    --font-sans:
-        "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
-        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-        "Noto Color Emoji";
+    --font-sans: "Cairo", sans-serif;
+
+    --color-neutral-primary: #ffffff;
+    --color-neutral-secondary-medium: #f9fafb;
+    --color-neutral-tertiary-medium: #f3f4f6;
+    --color-neutral-quaternary: #e5e7eb;
+
+    --color-default-medium: #d1d5db;
+    --color-default-strong: #9ca3af;
+
+    --color-body: #4b5563;
+    --color-heading: #111827;
+    --color-dark-strong: #1f2937;
+
+    --radius-base: 0.5rem;
 }
 
 body {
-    font-family: "Cairo", sans-serif;
+    @apply antialiased;
 }
 
 .active-link {
