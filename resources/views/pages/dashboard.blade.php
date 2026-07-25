@@ -62,6 +62,8 @@
         </div>
     </x-large-card>
 
+    <x-partials.vinyl-card title="هدوء البحر" artist="فنان مجهول" albumCover="album1.jpg" audioUrl="audio1.mp3" :isPlaying="true" />
+
 </div>
 
 @endsection

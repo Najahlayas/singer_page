@@ -94,18 +94,4 @@ class NewsController extends Controller
     $news->delete();
     return redirect()->route('news.index')->with('success', 'تم حذف الخبر بنجاح!');
 }
-
-
-
-
-
-// {{-- album art, Song image, album title, song title, audio url --}}
-
-
-
-
-
-
-
-
 }

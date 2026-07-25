@@ -27,7 +27,7 @@
 <x-dropdown align="left" width="48">
     <x-slot name="trigger">
             <div class="flex items-center">
-                <span class="me-2 text-white text-sm font-medium">مرحبا، مستخدم</span>
+                <span class="me-2 text-black text-sm font-medium">مرحبا، مستخدم</span>
 
                 <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg">
 
