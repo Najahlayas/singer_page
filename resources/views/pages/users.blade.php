@@ -1,12 +1,149 @@
 @extends('layouts.site-template')
 
-
-@section('title','users')
+@section('title', 'users')
 
 @section('content')
-<div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
-        <h1 class="text-2xl font-bold mb-4">Users</h1>
-        <p class="text-gray-700">Welcome to the users page! Here you can manage user accounts and their information.</p>
+    <div class="p-6 max-w-7xl mx-auto" dir="rtl">
+
+        <x-header title="المستخدمون" breadcrumb="الرئيسية / المستخدمون">
+            <x-actions-button url="{{ route('users.create') }}" icon="add" /> </x-header>
+
+        <x-search action="{{ route('users.index') }}" placeholder="ابحث عن مستخدم..." value="{{ request('search') }}" />
+
+        <x-table>
+            <x-slot name="headers">
+                <th class="py-4 px-6 font-semibold">الاسم</th>
+                <th class="py-4 px-6 font-semibold">البريد الإلكتروني</th>
+                <th class="py-4 px-6 font-semibold">الدور</th>
+                <th class="py-4 px-6 font-semibold">الحالة</th>
+                <th class="py-4 px-6 font-semibold">الإجراءات</th>
+            </x-slot>
+
+            <x-slot name="rows">
+                @forelse($users as $user)
+                    <tr class="hover:bg-gray-50/50 transition-colors">
+                        <td class="py-4 px-6 flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100"
+                                class="w-10 h-10 rounded-full object-cover" alt="User">
+                            <span class="font-medium text-gray-900">{{ $user->name }}</span>
+                        </td>
+                        <td class="py-4 px-6 text-gray-500">{{ $user->email }}</td>
+                        <td class="py-4 px-6 text-gray-600">
+                            {{ $user->getRoleNames()->first() ?? 'بدون دور' }}
+                        </td>
+                        <td class="py-4 px-6">
+                            <span
+                                class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-600">نشط</span>
+                        </td>
+                        <td class="py-4 px-6">
+
+                            <div class="flex items-center gap-2">
+
+
+                                <x-edit-button target="edit-user-{{ $user->id }}" />
+
+
+                                <x-delete-form route="{{ route('users.destroy', $user->id) }}" type="المستخدم"
+                                    id="{{ $user->id }}" />
+
+                            </div>
+
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="5" class="text-center py-6 text-gray-500">لا توجد بيانات متاحة.</td>
+                    </tr>
+                @endforelse
+            </x-slot>
+        </x-table>
+        @foreach ($users as $user)
+            <x-modal id="edit-user-{{ $user->id }}" title="تعديل المستخدم">
+
+                <form action="{{ route('users.update', $user->id) }}" method="POST">
+
+                    @csrf
+                    @method('PUT')
+
+
+                    <div class="mb-3">
+                        <label class="block mb-1 text-sm">
+                            الاسم
+                        </label>
+
+                        <input name="name" value="{{ $user->name }}" class="w-full border rounded-lg p-2">
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label class="block mb-1 text-sm">
+                            البريد الإلكتروني
+                        </label>
+
+                        <input name="email" value="{{ $user->email }}" class="w-full border rounded-lg p-2">
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label class="block mb-1 text-sm">
+                            الدور
+                        </label>
+
+                        <select name="role" class="w-full border rounded-lg p-2">
+
+                            <option value="مستخدم" {{ $user->role == 'مستخدم' ? 'selected' : '' }}>
+                                مستخدم
+                            </option>
+
+
+                            <option value="مدير" {{ $user->role == 'مدير' ? 'selected' : '' }}>
+                                مدير
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label class="block mb-1 text-sm">
+                            الحالة
+                        </label>
+
+                        <select name="status" class="w-full border rounded-lg p-2">
+
+                            <option value="active" {{ $user->status == 'active' ? 'selected' : '' }}>
+                                نشط
+                            </option>
+
+
+                            <option value="inactive" {{ $user->status == 'inactive' ? 'selected' : '' }}>
+                                غير نشط
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg">
+
+                        حفظ
+
+                    </button>
+
+
+                </form>
+
+            </x-modal>
+        @endforeach
+
+        <div class="mt-4">
+            {{ $users->links() }}
+        </div>
+
+
     </div>
 @endsection

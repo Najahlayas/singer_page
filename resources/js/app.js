@@ -20,6 +20,33 @@
 // });
 
 // Get the CSS variable --color-brand and convert it to hex for ApexCharts
+// ======================
+// Modal Functions
+// ======================
+
+window.openModal = function(id) {
+
+    const modal = document.getElementById(id);
+
+    if (modal) {
+        modal.classList.remove('hidden');
+    }
+
+};
+
+
+window.closeModal = function(id) {
+
+    const modal = document.getElementById(id);
+
+    if (modal) {
+        modal.classList.add('hidden');
+    }
+
+};
+
+
+
 const getBrandColor = () => {
     // Get the computed style of the document's root element
     const computedStyle = getComputedStyle(document.documentElement);
@@ -138,3 +165,9 @@ tailwind.config = {
         },
     },
 };
+
+// import Alpine from 'alpinejs';
+
+// window.Alpine = Alpine;
+
+// Alpine.start();

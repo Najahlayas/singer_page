@@ -7,60 +7,102 @@ use App\Models\User;
 use App\Models\Work;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $this->call([
+            PermissionSeeder::class,
+        ]);
 
-        User::factory()->create([
-            'name' => 'Test Admin',
-            'password' => bcrypt('password'),
+NewsArticle::factory(3)->create([
+    'image' => 'https://placehold.co/500/blue/yellow',
+    'title' => 'لوريم إيبسوم نص افتراضي 1',
+    'body' => 'لوريم إيبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض على العميل ليتصور طريق وضع النصوص بالتصاميم سواء كانت تصاميم مطبوعة أو نماذج مواقع إنترنت.
+
+عندما بدأ الرسامون والمصممون في استخدام نصوص لوريم إيبسوم، كانت الفكرة تكمن في توزيع الحروف بشكل عشوائي ليعطي انطباعاً كأن النص حقيقي. ومنذ ذلك الوقت، أصبح هذا النص معياراً للنص الصوري في الصناعة.
+
+ولقد نجت هذه التقنية ليس فقط لخمسة قرون، بل اجتاحت أيضاً عالم المنشورات الإلكترونية وبقيت كما هي دون تغيير يذكر. لقد انتشرت بشكل كبير في الستينات من هذا القرن مع إصدار رقائق "ليتراسيت" التي تحتوي على مقاطع من لوريم إيبسوم.
+
+وفي الآونة الأخيرة، عاد هذا النص للظهور مرة أخرى مع برامج النشر المكتبي مثل "ألدوس بايج ميكر" والتي تضمنت نسخاً من هذا النص الشهير.',
+]);
+
+
+NewsArticle::factory(3)->create([
+    'image' => 'https://placehold.co/600/black/pink',
+    'title' => 'لوريم إيبسوم نص افتراضي 2',
+    'body' => 'لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار النشوة وتمجيد الألم نشأت نتيجة لنظام هجين. سأعرض لك التفاصيل لتوضيح كيف نشأت هذه الفكرة العلمية حول السعادة القصوى.
+
+لا أحد يرفض أو يكره أو يتجنب السعادة في حد ذاتها، ولكن لأن الذين لا يعرفون كيف يتابعون السعادة بعقلانية يواجهون عواقب مؤلمة للغاية. وبالمثل، لا يوجد أحد يحب الألم لذاته أو يسعى إليه.
+
+في سياق متصل، من الواجب علينا أن نبحث في الأسباب التي تجعل البعض يفضلون المعاناة على الراحة في حالات معينة. إن المهام التي نضطلع بها يومياً تتطلب قدراً من التركيز والصبر، وهذا ما يوفره لنا هذا النص الافتراضي لاختبار قدرات العرض البصري.
+
+هناك العديد من الأنواع المتوفرة لنصوص لوريم إيبسوم، ولكن الغالبية تم تعديلها بشكل ما عبر إدخال بعض الكلمات العشوائية التي لا تبدو منطقية على الإطلاق.',
+]);
+
+
+NewsArticle::factory(3)->create([
+    'image' => 'https://placehold.co/200/red/purple',
+    'title' => 'لوريم إيبسوم نص افتراضي 3',
+    'body' => 'أبجد هوز حطي كلمن سعفص قرشت ثخذ ضظغ. هذا نص تجريبي لاختبار شكل الخط وحجمه والمسافات بين الفقرات. يستخدم هذا النص في مطابع التصميم والمكاتب الفنية منذ زمن بعيد.
+
+يتكون هذا النص من مجموعة من الجمل العشوائية التي لا تحمل معنى محدداً، والهدف منها هو إظهار جماليات التنسيق اللغوي وتوزيع الكتل النصية في الصفحة بشكل متوازن.
+
+يعتبر نص لوريم إيبسوم العربي وسيلة ممتازة للمصممين والمطورين لملء المساحات الفارغة قبل اعتماد المحتوى النهائي من قبل كاتب المحتوى أو العميل، لضمان جودة التصميم النهائي.'
+]);
+
+        // المدير
+        $admin = User::create([
+            'name' => 'Admin',
             'email' => 'admin@email.com',
+            'password' => Hash::make('password'),
+            'status' => 'active',
         ]);
 
-        NewsArticle::factory(3)->create([
-        'image' => 'https://placehold.co/500/blue/yellow',
-        'title' => 'seed news batch  1',
-        'body' => 'Irure excepteur ut aliqua aliqua sint ea ipsum. Est voluptate sint quis culpa nulla fugiat tempor occaecat enim culpa anim enim. In elit aliqua pariatur excepteur ad consectetur cillum commodo nulla eiusmod commodo cupidatat tempor. Nulla aliquip do excepteur nulla veniam. Eiusmod duis do cillum adipisicing. Duis in aliqua quis dolore aliqua nisi adipisicing ex excepteur labore esse. Amet ullamco sit laborum quis eiusmod esse dolore dolor non adipisicing aute.
-
-Reprehenderit tempor veniam deserunt eu fugiat aliqua ad incididunt fugiat laborum nostrud do. Amet aliqua deserunt veniam officia consectetur. Fugiat eu nulla consectetur deserunt cillum officia. Est aliqua reprehenderit consequat id commodo velit sunt occaecat nulla eu velit ut. Fugiat veniam commodo nulla magna dolor dolore dolore velit tempor ut ut esse. Mollit veniam consectetur in labore amet. Aliqua reprehenderit elit eiusmod amet culpa mollit.
-
-Et laborum et minim aliquip pariatur cupidatat sint. Eu laborum Lorem dolore ipsum et sit incididunt excepteur ea labore deserunt fugiat. Ea do reprehenderit culpa dolore nisi. Sit ex eu aute adipisicing incididunt mollit irure ea reprehenderit quis proident veniam. Adipisicing sint nisi incididunt nulla enim nulla ipsum.
-
-Tempor nulla aliqua enim proident duis ea adipisicing ea. In nostrud consequat exercitation magna incididunt velit consectetur exercitation nisi minim quis. Id tempor id aliquip enim. Eu laboris in ipsum adipisicing velit consectetur ad quis commodo nulla nostrud velit exercitation non. Cillum Lorem esse sunt nulla esse laboris pariatur minim cillum elit ea.
-
-Cupidatat eu consectetur occaecat eu anim eu tempor eiusmod eiusmod ea id aliquip laboris. Laborum est ad elit consequat eu ex laborum aute commodo consectetur adipisicing incididunt. Cupidatat adipisicing sunt ad nulla ut cupidatat ex veniam do aliquip veniam tempor minim.',
-        ]);
+        $admin->assignRole('مدير');
 
 
-        NewsArticle::factory(3)->create([
-        'image' => 'https://placehold.co/600/black/pink',
-        'title' => 'seed news batch  2',
-        'body' => 'Incididunt nulla tempor aliquip quis veniam reprehenderit minim culpa irure sit ut sint non. Ipsum fugiat mollit velit mollit amet laborum sint laboris quis ex nostrud. Ipsum irure fugiat laborum dolor sit aliquip deserunt ea exercitation labore eu elit. In cupidatat elit mollit sit esse. Sit nulla adipisicing velit dolore anim culpa dolore do.
+        // المستخدمون
+        $users = [
+            [
+                'name' => 'Ahmed Ali',
+                'email' => 'ahmed@email.com',
+            ],
+            [
+                'name' => 'Mohamed Salem',
+                'email' => 'mohamed@email.com',
+            ],
+            [
+                'name' => 'Sara Ahmed',
+                'email' => 'sara@email.com',
+            ],
+            [
+                'name' => 'Fatima Ali',
+                'email' => 'fatima@email.com',
+            ],
+            [
+                'name' => 'Omar Khaled',
+                'email' => 'omar@email.com',
+            ],
+            [
+                'name' => 'Nour Hassan',
+                'email' => 'nour@email.com',
+            ],
+        ];
 
-Adipisicing esse dolor voluptate esse eiusmod duis ad nulla ipsum do eiusmod excepteur duis. Ullamco quis quis aliquip exercitation et commodo quis laborum incididunt occaecat. Culpa sint nisi pariatur qui et. Consequat veniam consectetur in sit labore quis.
 
-Velit et consectetur reprehenderit dolore eiusmod do voluptate in qui ullamco id labore nisi irure. Ea et velit nostrud do reprehenderit reprehenderit voluptate anim nulla. Quis minim ea laborum proident sunt quis dolor commodo. Mollit cupidatat ullamco cupidatat enim officia. Anim dolore pariatur cillum consequat ea labore mollit voluptate et eu anim sint ad pariatur. Quis qui ipsum quis labore enim excepteur ad cupidatat consequat sunt amet adipisicing tempor.
+        foreach ($users as $data) {
 
-Nostrud do eu ut mollit. Non officia excepteur minim ullamco ex labore nisi commodo. Deserunt dolor id ad id fugiat veniam aliquip reprehenderit et. Veniam nisi voluptate id mollit duis reprehenderit veniam elit ex nisi laborum pariatur. Commodo veniam incididunt officia incididunt.',
-        ]);
+            $user = User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make('password'),
+                'status' => 'active',
+            ]);
 
-
-        NewsArticle::factory(3)->create([
-        'image' => 'https://placehold.co/200/red/purple',
-        'title' => 'seed news batch  3',
-    'body' => 'Esse laborum aliquip dolore enim. Exercitation occaecat officia culpa commodo occaecat elit qui nisi mollit aliqua laborum ut. Nisi voluptate quis mollit dolore et.
-
-Officia ea est dolore consectetur laborum do fugiat do consequat officia ea. Enim cillum cupidatat enim laboris consectetur esse nisi. Excepteur laboris elit nostrud exercitation aliquip mollit irure. Est sit sunt dolor Lorem ea ut duis dolor.
-
-Ipsum laborum excepteur est sunt dolore est mollit excepteur adipisicing officia et non ullamco. Dolor tempor sit ea adipisicing laboris ad id aliqua nostrud. Cupidatat mollit tempor deserunt ipsum eu veniam.'
-        ]);
+            $user->assignRole('مستخدم');
+        }
     }
 }
