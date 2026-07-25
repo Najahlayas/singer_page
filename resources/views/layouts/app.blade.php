@@ -10,5 +10,6 @@
     </head>
     <body>
     @yield('page')
+        @stack('modals')
     </body>
 </html>
