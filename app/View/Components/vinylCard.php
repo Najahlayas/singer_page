@@ -1,12 +1,13 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Partials; // Matches the folder: Partials
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class components.partials.vinylCard extends Component
+// Class name must be CamelCase and have NO dots
+class VinylCard extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +22,7 @@ class components.partials.vinylCard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.components.partials.vinyl-card');
+        // This should point to your blade file in resources/views/components/partials/vinyl-card.blade.php
+        return view('components.partials.vinyl-card');
     }
 }

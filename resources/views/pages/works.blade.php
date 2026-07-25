@@ -54,24 +54,21 @@
     </x-layouts.popup-template>
 
 
-    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
+    <div class="bg-white overflow-visible shadow-xl sm:rounded-lg p-6">
 <div class="grid grid-cols-2 md:grid-cols-3 gap-8 p-4">
     @foreach ($works as $work)
     <div class="relative">
     <x-partials.vinyl-card :work="$work" />
     </div>
-    @endforeach
-    </div>
-    </div>
-    </div>
+
 
 @push('modals')
 <x-layouts.popup-template title="هل انت متأكد من حذف هذا العمل؟" id="delete-work-modal-{{ $work->id }}">
-    <div class="w-full flex justify-center items-center space-x-4 border-t border-default pt-4 md:pt-6 gap-3">           
-    <form method="POST" action="{{ route('works.destroy', $work) }}">
+    <div class="w-full flex justify-center items-center space-x-4 border-t border-default pt-4 md:pt-6 gap-3">
+        <form method="POST" action="{{ route('works.destroy', $work) }}">
             @csrf
             @method('DELETE')
-             <button type="submit" class="w-fit text-center px-4 py-2 text-sm text-black hover:text-red-600 border border-default rounded-base  flex items-center hover:bg-red-100 gap-2">
+            <button type="submit" class="w-fit text-center px-4 py-2 text-sm text-black hover:text-red-600 border border-default rounded-base  flex items-center hover:bg-red-100 gap-2">
                 <span>
                     حذف
                 </span>
@@ -82,10 +79,10 @@
                     الغاء
                 </span>
             </button>
-    </div>
+        </div>
     </x-layouts.popup-template>
 
-<x-layouts.popup-template title="تعديل على عمل " id="edit-work-modal-{{ $work->id }}">
+    <x-layouts.popup-template title="تعديل على عمل " id="edit-work-modal-{{ $work->id }}">
         <form action="{{ route('works.update', $work->id) }}" method="POST">
             @csrf
             @method('PUT')
@@ -120,4 +117,9 @@
             </form>
     </x-layouts.popup-template>
     @endpush
+    @endforeach
+    </div>
+    </div>
+    </div>
+
 @endsection

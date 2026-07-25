@@ -1,5 +1,5 @@
 {{-- album art, Song image, album title, song title, audio url --}}
-
+@props(['work'])
 <div x-data="{ isPlaying: false }"  class="vinyl-card  max-w-full" style="background-image: url('{{ $work->album_art }}'); background-size: cover; background-position: center;">
     <div class="album-art-container">
         <x-dropdown align="right" width='24'>
@@ -28,7 +28,7 @@
             {{-- </form> --}}
     </x-slot>
         </x-dropdown>
-        
+
         <div class="vinyl-record" :class="isPlaying ? 'spin' : ''">
             <img src="{{ $work->song_image }}" alt="Vinyl Record" class="record-image">
             <div class="record-center"></div>
@@ -43,11 +43,11 @@
             <p title="{{ $work->album_title }}" class="album-name cursor-default" :class="isPlaying ? 'title-hover' : ''">{{ $work->album_title }}</p>
         </div>
 
-            <audio 
+            <audio
             @play="isPlaying = true"
             @pause="isPlaying = false"
             @ended="isPlaying = false"
-            controls src="{{ asset('storage/audio/test-audio.mp3') }}" class="audio-player h-auto max-w-full"></audio>
+            controls src="{{ asset($work->audio_url) }}" class="audio-player h-auto max-w-full"></audio>
     </div>
 </div>
 

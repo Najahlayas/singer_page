@@ -38,7 +38,8 @@ body {
 
 #wysiwyg-example span[style*="font-weight: bold"] {
     font-weight: bold !important;
-/* --- Vinyl Card Container --- */
+    /* --- Vinyl Card Container --- */
+}
 .vinyl-card {
     background: #1e1e24;
     border-radius: 15px;
@@ -52,7 +53,7 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     color: #fff;
     font-family: "Arial", sans-serif;
-    overflow: hidden;
+    overflow: visible;
     position: relative;
 }
 

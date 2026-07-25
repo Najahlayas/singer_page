@@ -47,21 +47,6 @@
         </div>
     </x-large-card>
 
-    <!-- Card 3: Analytics/Chart -->
-    <x-large-card>
-        <div class="flex justify-between items-start">
-            <div>
-                <h5 class="text-2xl font-semibold">32.4k</h5>
-                <p class="text-gray-500">Users this week</p>
-            <div class="space-y-6">
-                <x-news-card link="#" image="https://placehold.co/40/orange/white" title="هدوء البحر"
-                    date="25 مايو 2026" />
-                <x-news-card link="#" image="https://placehold.co/40/green/white" title="تجريد ألوان"
-                    date="24 مايو 2026" />
-                <x-news-card link="#" image="https://placehold.co/40/blue/white" title="لحظة تأمل"
-                    date="22 مايو 2026" />
-            </div>
-        </x-large-card>
 
         <!-- Card 3: Analytics/Chart -->
         <x-large-card>
@@ -86,9 +71,6 @@
                 <a href="#" class="text-purple-600 text-sm font-bold">Users Report</a>
             </div>
         </x-large-card>
-
-    <x-partials.vinyl-card title="هدوء البحر" artist="فنان مجهول" albumCover="album1.jpg" audioUrl="audio1.mp3" :isPlaying="true" />
-
 </div>
 
 @endsection

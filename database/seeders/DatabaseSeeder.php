@@ -17,6 +17,34 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
         ]);
 
+Work::factory(3)->create([
+        // {{-- album art, Song image, album title, song title, audio url --}}
+        'album_art' => 'https://placehold.co/150/green/white',
+        'song_image' => 'https://placehold.co/200/pink/white',
+        'album_title' => 'البوم اختبار 1',
+        'song_title' => 'اغنية اختبار 1',
+        'audio_url' => 'audio/test-audio.mp3',
+        ]);
+
+        Work::factory(3)->create([
+        // {{-- album art, Song image, album title, song title, audio url --}}
+        'album_art' => 'https://placehold.co/300/red/white',
+        'song_image' => 'https://placehold.co/250/blue/white',
+        'album_title' => 'البوم اختبار 2',
+        'song_title' => 'اغنية اختبار 2',
+        'audio_url' => 'audio/test-audio.mp3',
+        ]);
+
+        Work::factory(3)->create([
+        // {{-- album art, Song image, album title, song title, audio url --}}
+        'album_art' => 'https://placehold.co/500/red/white',
+        'song_image' => 'https://placehold.co/400/blue/white',
+        'album_title' => 'البوم اختبار 3',
+        'song_title' => 'اغنية اختبار 3',
+        'audio_url' => 'audio/test-audio.mp3',
+        ]);
+
+
 NewsArticle::factory(3)->create([
     'image' => 'https://placehold.co/500/blue/yellow',
     'title' => 'لوريم إيبسوم نص افتراضي 1',
