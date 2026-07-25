@@ -21,41 +21,12 @@
 
     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6">
 <div class="grid grid-cols-2 md:grid-cols-3 gap-8 p-4">
-    {{-- @foreach (news as post) --}}
-    <div class="relative">
-    <x-partials.news-card /> {{-- :post="$post" --}}
-
+    @foreach ($news as $post)
+    <div>
+    <x-partials.news-card  :post="$post"/>
     </div>
-
-
-    <div class="relative">
-    <x-partials.news-card />
+    @endforeach
     </div>
-
-
-
-    <div class="relative">
-    <x-partials.news-card />
-    </div>
-
-
-
-    <div class="relative">
-    <x-partials.news-card />
-    </div>
-
-
-
-    <div class="relative">
-    <x-partials.news-card />
-    </div>
-
-
-
-    <div class="relative">
-    <x-partials.news-card />
-    </div>
-    {{-- @endforeach --}}
     </div>
     </div>
     </div>

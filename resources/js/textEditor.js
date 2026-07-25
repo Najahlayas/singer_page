@@ -13,6 +13,7 @@ import Bold from "https://esm.sh/@tiptap/extension-bold@2.6.6";
 
 window.addEventListener("load", function () {
     const editorElement = document.getElementById("wysiwyg-example");
+    const hiddenInput = document.getElementById("news-content"); // Reference to your database-linked input
 
     if (editorElement) {
         // --- ADD THIS BLOCK ---
@@ -25,6 +26,7 @@ window.addEventListener("load", function () {
     #wysiwyg-example [style*="text-align: left"] { text-align: left !important; }
     #wysiwyg-example [style*="text-align: center"] { text-align: center !important; }
     #wysiwyg-example [style*="text-align: right"] { text-align: right !important; }
+    .is-active { background-color: #e5e7eb; border-radius: 4px; } /* Visual feedback for active styles */
 `;
         document.head.appendChild(style);
         // --- END OF CSS BLOCK ---
@@ -79,12 +81,31 @@ window.addEventListener("load", function () {
                 Image,
                 YouTube,
             ],
-            content: "",
+            // --- IMPROVEMENT: LOAD OLD DATA ---
+            // If hiddenInput has value (from DB), use it. Otherwise empty string.
+            content: hiddenInput ? hiddenInput.value : "",
+            // ----------------------------------
             editorProps: {
                 attributes: {
                     class: "format lg:format-lg dark:format-invert focus:outline-none max-w-none min-h-[250px]",
                 },
             },
+            // --- IMPROVEMENT: UI FEEDBACK ---
+            // Updates button styles when the cursor moves to edited text
+            onSelectionUpdate({ editor }) {
+                const syncActiveState = (id, name, opts = {}) => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        if (editor.isActive(name, opts))
+                            el.classList.add("is-active");
+                        else el.classList.remove("is-active");
+                    }
+                };
+                syncActiveState("toggleBoldButton", "bold");
+                syncActiveState("toggleUnderlineButton", "underline");
+                syncActiveState("toggleItalicButton", "italic");
+            },
+            // ----------------------------------
         });
 
         // 3. Helper function for Buttons (Stops form from submitting)
@@ -235,11 +256,13 @@ window.addEventListener("load", function () {
 
         // 6. Form Submission Sync (IMPORTANT)
         const form = document.getElementById("newsForm");
-        const hiddenInput = document.getElementById("news-content");
 
         if (form && hiddenInput) {
             form.addEventListener("submit", (e) => {
+                // Get edited content
                 const html = editor.getHTML();
+
+                // Update the hidden input value right before sending to database
                 hiddenInput.value = html;
 
                 if (html === "" || html === "<p></p>") {
@@ -248,5 +271,11 @@ window.addEventListener("load", function () {
                 }
             });
         }
+
+        // --- NEW: FUNCTION TO MANUALLY LOAD CONTENT (OPTIONAL) ---
+        // Useful if you fetch data via AJAX instead of page load
+        window.loadEditorContent = (content) => {
+            editor.commands.setContent(content);
+        };
     } // End of editor existence check
 });

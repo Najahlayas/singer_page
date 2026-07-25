@@ -28,5 +28,6 @@
     <body>
     @yield('page')
     @stack('scripts')
+    @stack('modals')
     </body>
 </html>

@@ -13,9 +13,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        // $works = News::all();
-        // return view('pages.news', compact('works'));
-        return view('pages.news');
+            $news = NewsArticle::latest()->paginate(10);
+        return view('pages.news', compact('news'));
+        // return view('pages.news');
     }
 
     /**
@@ -23,7 +23,7 @@ class NewsController extends Controller
      */
     public function create()
 {
-    return view('pages.textEditingPage');
+    return view('pages.textEditingPage', ['post' => null]);
 }
 
     /**
@@ -46,22 +46,22 @@ class NewsController extends Controller
         $data['image'] = $imagePath;
     }
     else{
-        $data['image'] = 'https://placehold.co/600x400?text=Place\nHolder';
+        $data['image'] = null;
     }
 
     // 3. Save to Database
     NewsArticle::create($data);
 
-    return redirect()->route('news.index')->with('success', 'Article created successfully!');
-    }
+    return redirect()->route('news.index')->with('success', 'تم اضافة الخبر بنجاح!');
+}
 
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(int $id)
     {
-        $news = NewsArticle::all();
-        return view('pages.news', compact('news'));
+        $post = NewsArticle::findOrFail($id);
+        return view('pages.newsViewPage', compact('post'));
     }
 
     /**
@@ -69,8 +69,11 @@ class NewsController extends Controller
      */
     public function edit (int $id)
 {
-    $news = NewsArticle::findOrFail($id);
-    return response()->json($news);}
+    $post = NewsArticle::findOrFail($id);
+    // return response()->json($news);
+    return view('pages.textEditingPage', compact('post'));
+
+    }
 
     /**
      * Update the specified resource in storage.
@@ -80,7 +83,7 @@ class NewsController extends Controller
         $news = NewsArticle::findOrFail($id);
         $data = $request->only(['image', 'title', 'body']);
         $news->update($data);
-        return redirect()->back()->with('success', 'تم تحديث الخبر بنجاح!');
+        return redirect()->route('news.index')->with('success', 'تم تحديث الخبر بنجاح!');
 }
 
     /**
@@ -89,7 +92,7 @@ class NewsController extends Controller
     public function destroy(NewsArticle $news)
 {
     $news->delete();
-    return redirect()->back()->with('success', 'تم حذف الخبر بنجاح!');
+    return redirect()->route('news.index')->with('success', 'تم حذف الخبر بنجاح!');
 }
 
 
