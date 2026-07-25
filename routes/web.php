@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\Auth\Logout;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\WorkController;
 use App\Http\Controllers\UserController;
@@ -17,9 +18,7 @@ Route::post('/login', Login::class)->middleware('guest');
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/dashboard', function () {
-        return view('pages.dashboard');
-    });
+    Route::get('/dashboard', [DashboardController::class,'index']);
 
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);

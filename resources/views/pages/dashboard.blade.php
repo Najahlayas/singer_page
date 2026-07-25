@@ -1,3 +1,4 @@
+@props(['works','permissions','roles', 'latestNews'])
 @extends('layouts.site-template')
 
 @section('title', 'Dashboard')
@@ -5,18 +6,18 @@
 @section('content')
     <div class="grid grid-cols-3 gap-6">
 
-        <x-small-card number="86" label="الاعمال الفنية"
+        <x-small-card number="{{ $works }}" label="الاعمال الفنية"
             svgIcon="M8 18c0 1.1046-.89543 2-2 2s-2-.8954-2-2 .89543-2 2-2 2 .8954 2 2Zm0 0V6.33333L18 4v11.6667M8 10.3333 18 8m0 8c0 1.1046-.8954 2-2 2s-2-.8954-2-2 .8954-2 2-2 2 .8954 2 2Z"
-            iconColor="text-purple-700" iconBgColor="bg-purple-300" link="#" />
+            iconColor="text-purple-700" iconBgColor="bg-purple-300" link="/works" />
 
-        <x-small-card number="18" label="الصلاحيات"
+        <x-small-card number="{{ $permissions }}" label="الصلاحيات"
             svgIcon="M9.5 11.5 11 13l4-3.5M12 20a16.405 16.405 0 0 1-5.092-5.804A16.694 16.694 0 0 1 5 6.666L12 4l7 2.667a16.695 16.695 0 0 1-1.908 7.529A16.406 16.406 0 0 1 12 20Z"
-            iconColor="text-orange-600" iconBgColor="bg-orange-300" link="#" />
+            iconColor="text-orange-600" iconBgColor="bg-orange-300" link="/permissions" />
 
 
-        <x-small-card number="7" label="الادوار"
+        <x-small-card number="{{ $roles }}" label="الادوار"
             svgIcon="M9.143 4H4.857A.857.857 0 0 0 4 4.857v4.286c0 .473.384.857.857.857h4.286A.857.857 0 0 0 10 9.143V4.857A.857.857 0 0 0 9.143 4Zm10 0h-4.286a.857.857 0 0 0-.857.857v4.286c0 .473.384.857.857.857h4.286A.857.857 0 0 0 20 9.143V4.857A.857.857 0 0 0 19.143 4Zm-10 10H4.857a.857.857 0 0 0-.857.857v4.286c0 .473.384.857.857.857h4.286a.857.857 0 0 0 .857-.857v-4.286A.857.857 0 0 0 9.143 14Zm10 0h-4.286a.857.857 0 0 0-.857.857v4.286c0 .473.384.857.857.857h4.286a.857.857 0 0 0 .857-.857v-4.286a.857.857 0 0 0-.857-.857Z"
-            iconColor="text-green-700" iconBgColor="bg-green-300" link="#" />
+            iconColor="text-green-700" iconBgColor="bg-green-300" link="/roles" />
     </div>
 
 
@@ -35,15 +36,15 @@
         </x-large-card>
 
         <!-- Card 2: Recent Works -->
-        <x-large-card title="آخر الأعمال المضافة">
+        <x-large-card title="آخر الأخبار المضافة">
             <x-slot name="action">
-                <a href="#" class="text-sm text-purple-600 hover:underline">عرض الكل</a>
+                <a href="/news" class="text-sm text-purple-600 hover:underline">عرض الكل</a>
             </x-slot>
 
         <div class="space-y-6">
-            <x-partials.dashboard-news-card link="#" image="https://placehold.co/40/orange/white" title="هدوء البحر" date="25 مايو 2026" />
-            <x-partials.dashboard-news-card link="#" image="https://placehold.co/40/green/white" title="تجريد ألوان" date="24 مايو 2026" />
-            <x-partials.dashboard-news-card link="#" image="https://placehold.co/40/blue/white" title="لحظة تأمل" date="22 مايو 2026" />
+            @foreach ($latestNews as $latest )
+            <x-partials.dashboard-news-card link="{{ route('news.show', $latest->id) }}" image="{{ $latest->image }}" title="{{ $latest->title }}" date="{{ $latest->updated_at }}" />
+            @endforeach
         </div>
     </x-large-card>
 
