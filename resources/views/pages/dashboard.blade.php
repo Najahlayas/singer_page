@@ -4,8 +4,7 @@
 
 @section('content')
 
-    <div class="grid grid-cols-3 gap-6">
-
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <x-small-card number="{{ $works }}" label="الاعمال الفنية"
             svgIcon="M8 18c0 1.1046-.89543 2-2 2s-2-.8954-2-2 .89543-2 2-2 2 .8954 2 2Zm0 0V6.33333L18 4v11.6667M8 10.3333 18 8m0 8c0 1.1046-.8954 2-2 2s-2-.8954-2-2 .8954-2 2-2 2 .8954 2 2Z"
             iconColor="text-purple-700" iconBgColor="bg-purple-300" link="/works" />
@@ -70,8 +69,8 @@
 
 
                 @foreach ($latestNews as $latest)
-                    <x-partials.dashboard-news-card link="{{ route('news.show', $latest->id) }}" image="{{ $latest->image }}"
-                        title="{{ $latest->title }}" date="{{ $latest->updated_at }}" />
+                    <x-partials.dashboard-news-card link="{{ route('news.show', $latest->id) }}"
+                        image="{{ $latest->image }}" title="{{ $latest->title }}" date="{{ $latest->updated_at }}" />
                 @endforeach
 
 

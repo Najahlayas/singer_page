@@ -3,7 +3,7 @@
 @section('title', $title ?? 'Default Title')
 @section('page')
     <div x-data="{ sidebarOpen: false }">
-         {{-- class="h-20 fixed top-0 z-40 w-full bg-white shadow px-6 flex items-center justify-between"> --}}
+        {{-- class="h-20 fixed top-0 z-40 w-full bg-white shadow px-6 flex items-center justify-between"> --}}
         <nav class=" h-20 fixed top-0 z-40 w-full  bg-white shadow px-6 sm:w-[calc(100%-16rem)] left-0 items-center">
             <div class="px-3 py-3 lg:px-5">
                 <div class="flex items-center justify-between">
@@ -21,9 +21,8 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9.143 4H4.857A.857.857 0 0 0 4 4.857v4.286c0 .473.384.857.857.857h4.286A.857.857 0 0 0 10 9.143V4.857A.857.857 0 0 0 9.143 4Zm10 0h-4.286a.857.857 0 0 0-.857.857v4.286c0 .473.384.857.857.857h4.286A.857.857 0 0 0 20 9.143V4.857A.857.857 0 0 0 19.143 4Zm-10 10H4.857a.857.857 0 0 0-.857.857v4.286c0 .473.384.857.857.857h4.286a.857.857 0 0 0 .857-.857v-4.286A.857.857 0 0 0 9.143 14Zm10 0h-4.286a.857.857 0 0 0-.857.857v4.286c0 .473.384.857.857.857h4.286a.857.857 0 0 0 .857-.857v-4.286a.857.857 0 0 0-.857-.857Z" />
                             </svg>
-                            <h2 class="text-xl font-bold">
-                                @yield('page-title', 'الرئيسية')
-                            </h2>
+                            <h4 class="flex justify-center font-bold"> @yield('page-title', 'الرئيسية')
+                            </h4>
                         </div>
                     </div>
                     <x-dropdown align="left" width="48">
