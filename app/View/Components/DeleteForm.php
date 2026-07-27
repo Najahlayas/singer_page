@@ -10,14 +10,18 @@ class DeleteForm extends Component
 {
     public $route;
     public $type;
+    public $id;
+    public $label;
+    public $iconOnly;
 
-    public function __construct($route, $type)
-    {
-        $this->route = $route;
-        $this->type = $type;
-    }
-
-
+   public function __construct($route, $type, $id, $label = null, $iconOnly = true)
+{
+    $this->route = $route;
+    $this->type = $type;
+    $this->id = $id;
+    $this->label = $label;
+    $this->iconOnly = $iconOnly;
+}
     public function render(): View|Closure|string
     {
         return view('components.delete-form');

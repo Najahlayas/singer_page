@@ -17,7 +17,6 @@
     </head>
 
     <body>
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
         @yield('page')
         @stack('scripts')
         @stack('modals')

@@ -129,11 +129,7 @@
 
                                 <x-edit-button target="edit-role-{{ $role->id }}" />
 
-
-
-                                <x-delete-form route="{{ route('roles.destroy', $role->id) }}" type="الدور"
-                                    id="{{ $role->id }}" />
-
+                                <x-delete-form :route="route('roles.destroy', $role->id)" type="الدور" :id="$role->id" />
                             </div>
 
 

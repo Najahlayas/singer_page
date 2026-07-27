@@ -27,12 +27,21 @@ class NewsController extends Controller
     public function store(Request $request)
     {
 
-        $data = $request->validate([
-            'title' => 'required|string',
-            'body'  => 'required|string',
-            'image' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
-        ]);
-
+     $data = $request->validate(
+    [
+        'title' => 'required|string',
+        'body'  => 'required|string',
+        'image' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
+    ],
+    [
+        'title.required' => 'عنوان الخبر مطلوب.',
+        'body.required' => 'محتوى الخبر مطلوب.',
+        'image.required' => 'صورة الخبر مطلوبة.',
+        'image.image' => 'يجب أن يكون الملف صورة.',
+        'image.mimes' => 'يجب أن تكون الصورة من نوع: jpg أو jpeg أو png أو webp.',
+        'image.max' => 'يجب ألا يتجاوز حجم الصورة 2 ميجابايت.',
+    ]
+);
 
         if ($request->hasFile('image')) {
 

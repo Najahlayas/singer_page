@@ -30,6 +30,7 @@ window.openModal = function(id) {
 
     if (modal) {
         modal.classList.remove('hidden');
+        modal.classList.add('flex');
     }
 
 };
@@ -41,10 +42,10 @@ window.closeModal = function(id) {
 
     if (modal) {
         modal.classList.add('hidden');
+        modal.classList.remove('flex');
     }
 
 };
-
 
 
 const getBrandColor = () => {

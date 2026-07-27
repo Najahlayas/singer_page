@@ -117,16 +117,12 @@
 
 
                         <td class="py-4 px-6">
-
                             <div class="flex gap-2">
 
-                                <x-edit-button target="edit-permission-{{ $permission->id }}" />
-
-                                <x-delete-form route="{{ route('permissions.destroy', $permission->id) }}" type="الصلاحية"
-                                    id="{{ $permission->id }}" />
+                                <x-edit-button target="edit-permission-{{ $permission->id }}" /> <x-delete-form
+                                    :route="route('permissions.destroy', $permission->id)" type="الصلاحية" :id="$permission->id" />
 
                             </div>
-
                         </td>
 
 

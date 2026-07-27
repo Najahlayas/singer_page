@@ -46,10 +46,7 @@
 
                                 <x-edit-button target="edit-user-{{ $user->id }}" />
 
-
-                                <x-delete-form route="{{ route('users.destroy', $user->id) }}" type="المستخدم"
-                                    id="{{ $user->id }}" />
-
+                                <x-delete-form :route="route('users.destroy', $user->id)" type="المستخدم" :id="$user->id" />
                             </div>
 
                         </td>

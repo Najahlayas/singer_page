@@ -26,22 +26,10 @@
 
             <x-slot name="content">
 
-                <div class="flex items-center w-full">
-                    <x-edit-button target="edit-work-{{ $work->id }}" />
-
-                    <span class="mr-2 text-sm text-blue-600">
-                        تعديل
-                    </span>
-                </div>
-
+                <x-edit-button target="edit-work-{{ $work->id }}" label="تعديل" :iconOnly="false" />
 
                 <div class="flex items-center w-full">
-                    <x-delete-form route="{{ route('works.destroy', $work->id) }}" type="العمل"
-                        id="{{ $work->id }}" />
-
-                    <span class="mr-2 text-sm text-red-600">
-                        حذف
-                    </span>
+                    <x-delete-form :route="route('works.destroy', $work->id)" type="العمل" :id="$work->id" label="حذف" />
                 </div>
 
             </x-slot> </x-dropdown>

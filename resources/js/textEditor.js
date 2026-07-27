@@ -58,39 +58,61 @@ window.addEventListener("load", function () {
         });
 
         // 2. Initialize Editor
-        const editor = new Editor({
-            element: editorElement,
-            autofocus: true,
-            extensions: [
-                StarterKit.configure({
-                    textStyle: false,
-                    bold: false,
-                }),
-                CustomBold,
-                TextStyle,
-                Color,
-                FontSizeTextStyle,
-                FontFamily,
-                Highlight,
-                Underline,
-                Link.configure({ openOnClick: false, autolink: true }),
-                TextAlign.configure({
-                    types: ["heading", "paragraph"],
-                    defaultAlignment: "right",
-                }),
-                Image,
-                YouTube,
-            ],
-            // --- IMPROVEMENT: LOAD OLD DATA ---
-            // If hiddenInput has value (from DB), use it. Otherwise empty string.
-            content: hiddenInput ? hiddenInput.value : "",
-            // ----------------------------------
-            editorProps: {
-                attributes: {
-                    class: "format lg:format-lg dark:format-invert focus:outline-none max-w-none min-h-[250px]",
-                },
-            },
-            // --- IMPROVEMENT: UI FEEDBACK ---
+     const editor = new Editor({
+    element: editorElement,
+    autofocus: true,
+
+    extensions: [
+        StarterKit.configure({
+            textStyle: false,
+            bold: false,
+        }),
+        CustomBold,
+        TextStyle,
+        Color,
+        FontSizeTextStyle,
+        FontFamily,
+        Highlight,
+        Underline,
+        Link.configure({ openOnClick: false, autolink: true }),
+        TextAlign.configure({
+            types: ["heading", "paragraph"],
+            defaultAlignment: "right",
+        }),
+        Image,
+        YouTube,
+    ],
+
+    content: hiddenInput ? hiddenInput.value : "",
+
+    onUpdate({ editor }) {
+        if (hiddenInput) {
+            hiddenInput.value = editor.getHTML();
+        }
+    },
+
+    onSelectionUpdate({ editor }) {
+        const syncActiveState = (id, name) => {
+            const el = document.getElementById(id);
+
+            if (el) {
+                el.classList.toggle(
+                    "is-active",
+                    editor.isActive(name)
+                );
+            }
+        };
+
+        syncActiveState("toggleBoldButton", "bold");
+        syncActiveState("toggleUnderlineButton", "underline");
+        syncActiveState("toggleItalicButton", "italic");
+    },
+
+    editorProps: {
+        attributes: {
+            class: "format lg:format-lg dark:format-invert focus:outline-none max-w-none min-h-[250px]",
+        },
+          // --- IMPROVEMENT: UI FEEDBACK ---
             // Updates button styles when the cursor moves to edited text
             onSelectionUpdate({ editor }) {
                 const syncActiveState = (id, name, opts = {}) => {
@@ -105,7 +127,7 @@ window.addEventListener("load", function () {
                 syncActiveState("toggleUnderlineButton", "underline");
                 syncActiveState("toggleItalicButton", "italic");
             },
-            // ----------------------------------
+           }   // ----------------------------------
         });
 
         // 3. Helper function for Buttons (Stops form from submitting)
@@ -254,23 +276,7 @@ window.addEventListener("load", function () {
 
         bindBtn("reset-color", () => editor.commands.unsetColor());
 
-        // 6. Form Submission Sync (IMPORTANT)
-        const form = document.getElementById("newsForm");
 
-        if (form && hiddenInput) {
-            form.addEventListener("submit", (e) => {
-                // Get edited content
-                const html = editor.getHTML();
-
-                // Update the hidden input value right before sending to database
-                hiddenInput.value = html;
-
-                if (html === "" || html === "<p></p>") {
-                    alert("الرجاء كتابة محتوى الخبر");
-                    e.preventDefault();
-                }
-            });
-        }
 
         // --- NEW: FUNCTION TO MANUALLY LOAD CONTENT (OPTIONAL) ---
         // Useful if you fetch data via AJAX instead of page load
