@@ -20,13 +20,11 @@ class DashboardController extends Controller
         $roles = Role::count();
 
 
-        // آخر الأخبار
         $latestNews = NewsArticle::latest()
             ->take(3)
             ->get();
 
 
-        // عدد الأخبار خلال أيام الأسبوع
         $ideasChart = NewsArticle::select(
                 DB::raw('DAYNAME(created_at) as day'),
                 DB::raw('COUNT(*) as total')
@@ -39,7 +37,6 @@ class DashboardController extends Controller
             ->get();
 
 
-        // تحويل الأيام إلى العربية
         $arabicDays = [
             'Saturday' => 'السبت',
             'Sunday' => 'الأحد',
