@@ -3,7 +3,8 @@
 @section('title', $title ?? 'Default Title')
 @section('page')
     <div x-data="{ sidebarOpen: false }">
-        <nav class=" h-20 fixed top-0 z-40 sm:z-50 w-full  bg-white shadow px-6 sm:w-[calc(100%-16rem)] left-0 items-center">
+         {{-- class="h-20 fixed top-0 z-40 w-full bg-white shadow px-6 flex items-center justify-between"> --}}
+        <nav class=" h-20 fixed top-0 z-40 w-full  bg-white shadow px-6 sm:w-[calc(100%-16rem)] left-0 items-center">
             <div class="px-3 py-3 lg:px-5">
                 <div class="flex items-center justify-between">
 
