@@ -1,111 +1,173 @@
-      const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
+// const navLinks = document.querySelectorAll(".nav-link");
+// navLinks.forEach((link) => {
+//     link.addEventListener("click", function () {
+//         navLinks.forEach((item) => {
+//             item.classList.remove("active-link");
+//         });
+//         this.classList.add("active-link");
+//     });
+// });
+// const menuBtn = document.getElementById("menu-btn");
+// const closeBtn = document.getElementById("close-btn");
+// const sidebar = document.getElementById("default-sidebar");
 
-                navLinks.forEach(item => {
-                    item.classList.remove('active-link');
-                });
-                this.classList.add('active-link');
-            });
-        });
-const menuBtn = document.getElementById('menu-btn');
-const closeBtn = document.getElementById('close-btn');
-const sidebar = document.getElementById('default-sidebar');
+// menuBtn.addEventListener("click", () => {
+//     sidebar.classList.remove("translate-x-full");
+// });
 
-
-menuBtn.addEventListener('click', () => {
-
-    sidebar.classList.remove('translate-x-full');
-
-});
-
-
-closeBtn.addEventListener('click', () => {
-
-    sidebar.classList.add('translate-x-full');
-
-});
+// closeBtn.addEventListener("click", () => {
+//     sidebar.classList.add("translate-x-full");
+// });
 
 // Get the CSS variable --color-brand and convert it to hex for ApexCharts
-const getBrandColor = () => {
-  // Get the computed style of the document's root element
-  const computedStyle = getComputedStyle(document.documentElement);
+// ======================
+// Modal Functions
+// ======================
 
-  // Get the value of the --color-brand CSS variable
-  return computedStyle.getPropertyValue('--color-fg-brand').trim() || "#1447E6";
+window.openModal = function(id) {
+
+    const modal = document.getElementById(id);
+
+    if (modal) {
+        modal.classList.remove('hidden');
+    }
+
+};
+
+
+window.closeModal = function(id) {
+
+    const modal = document.getElementById(id);
+
+    if (modal) {
+        modal.classList.add('hidden');
+    }
+
+};
+
+
+
+const getBrandColor = () => {
+    // Get the computed style of the document's root element
+    const computedStyle = getComputedStyle(document.documentElement);
+
+    // Get the value of the --color-brand CSS variable
+    return (
+        computedStyle.getPropertyValue("--color-fg-brand").trim() || "#1447E6"
+    );
 };
 
 const brandColor = getBrandColor();
 
 const options = {
-  chart: {
-    height: "100%",
-    maxWidth: "100%",
-    type: "area",
-    fontFamily: "Inter, sans-serif",
-    dropShadow: {
-      enabled: false,
+    chart: {
+        height: "100%",
+        maxWidth: "100%",
+        type: "area",
+        fontFamily: "Inter, sans-serif",
+        dropShadow: {
+            enabled: false,
+        },
+        toolbar: {
+            show: false,
+        },
     },
-    toolbar: {
-      show: false,
+    tooltip: {
+        enabled: true,
+        x: {
+            show: false,
+        },
     },
-  },
-  tooltip: {
-    enabled: true,
-    x: {
-      show: false,
+    fill: {
+        type: "gradient",
+        gradient: {
+            opacityFrom: 0.55,
+            opacityTo: 0,
+            shade: brandColor,
+            gradientToColors: [brandColor],
+        },
     },
-  },
-  fill: {
-    type: "gradient",
-    gradient: {
-      opacityFrom: 0.55,
-      opacityTo: 0,
-      shade: brandColor,
-      gradientToColors: [brandColor],
+    dataLabels: {
+        enabled: false,
     },
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  stroke: {
-    width: 6,
-  },
-  grid: {
-    show: false,
-    strokeDashArray: 4,
-    padding: {
-      left: 2,
-      right: 2,
-      top: 0
+    stroke: {
+        width: 6,
     },
-  },
-  series: [
-    {
-      name: "New users",
-      data: [6500, 6418, 6456, 6526, 6356, 6456],
-      color: brandColor,
+    grid: {
+        show: false,
+        strokeDashArray: 4,
+        padding: {
+            left: 2,
+            right: 2,
+            top: 0,
+        },
     },
-  ],
-  xaxis: {
-    categories: ['01 February', '02 February', '03 February', '04 February', '05 February', '06 February', '07 February'],
-    labels: {
-      show: false,
+    series: [
+        {
+            name: "New users",
+            data: [6500, 6418, 6456, 6526, 6356, 6456],
+            color: brandColor,
+        },
+    ],
+    xaxis: {
+        categories: [
+            "01 February",
+            "02 February",
+            "03 February",
+            "04 February",
+            "05 February",
+            "06 February",
+            "07 February",
+        ],
+        labels: {
+            show: false,
+        },
+        axisBorder: {
+            show: false,
+        },
+        axisTicks: {
+            show: false,
+        },
     },
-    axisBorder: {
-      show: false,
+    yaxis: {
+        show: false,
     },
-    axisTicks: {
-      show: false,
-    },
-  },
-  yaxis: {
-    show: false,
-  },
-}
+};
 
-if (document.getElementById("area-chart") && typeof ApexCharts !== 'undefined') {
-  const chart = new ApexCharts(document.getElementById("area-chart"), options);
-  chart.render();
+if (
+    document.getElementById("area-chart") &&
+    typeof ApexCharts !== "undefined"
+) {
+    const chart = new ApexCharts(
+        document.getElementById("area-chart"),
+        options,
+    );
+    chart.render();
 }
+tailwind.config = {
+    important: true,
+    theme: {
+        extend: {
+            colors: {
+                brand: {
+                    DEFAULT: "#1a56db",
+                    strong: "#1e429f",
+                    medium: "#3f83f8",
+                },
+                heading: "#111827",
+                body: "#6b7280",
+                "neutral-secondary-medium": "#f9fafb",
+                "default-medium": "#d1d5db",
+            },
+            borderRadius: {
+                base: "0.5rem",
+            },
+        },
+    },
+};
 
+// import Alpine from 'alpinejs';
+
+// window.Alpine = Alpine;
+
+// Alpine.start();
