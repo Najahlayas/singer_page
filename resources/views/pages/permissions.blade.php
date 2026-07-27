@@ -83,16 +83,34 @@
 
                         <td class="py-4 px-6">
 
-                            <x-dropdown-list count="{{ $permission->roles->count() }}" text="أدوار">
+                            <x-dropdown>
 
-                                @foreach ($permission->roles as $role)
-                                    <li class="border-b pb-1">
-                                        {{ $role->name }}
-                                    </li>
-                                @endforeach
+                                <x-slot:trigger>
+                                    <button
+                                        class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-lg text-sm flex items-center gap-1">
 
-                            </x-dropdown-list>
+                                        {{ $permission->roles->count() }} أدوار
 
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                        </svg>
+
+                                    </button>
+                                </x-slot:trigger>
+
+                                <x-slot:content>
+                                    <ul class="text-sm space-y-1 text-center">
+                                        @foreach ($permission->roles as $role)
+                                            <li class="border-b pb-1">
+                                                {{ $role->name }}
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </x-slot:content>
+
+                            </x-dropdown>
                         </td>
 
 

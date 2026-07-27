@@ -55,27 +55,7 @@
         </div>
     </div>
     @push('modals')
-        <x-layouts.popup-template title="هل انت متأكد من حذف هذا العمل؟" id="delete-post-modal-{{ $post->id }}">
-            <div class="w-full flex justify-center items-center space-x-4 border-t border-default pt-4 md:pt-6 gap-3">
-                <form method="POST" action="{{ route('news.destroy', $post) }}">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit"
-                        class="w-fit text-center px-4 py-2 text-sm text-black hover:text-red-600 border border-default rounded-base  flex items-center hover:bg-red-100 gap-2">
-                        <span>
-                            حذف
-                        </span>
-                    </button>
-                </form>
-                <button data-modal-target="delete-post-modal-{{ $post->id }}"
-                    data-modal-hide="delete-post-modal-{{ $post->id }}" type="button"
-                    class="w-fit text-center px-4 py-2 text-sm text-black hover:bg-gray-100 flex items-center border border-default rounded-base  gap-2">
-                    <span>
-                        الغاء
-                    </span>
-                </button>
-            </div>
-        </x-layouts.popup-template>
+        <x-delete-form :route="route('news.destroy', $post)" type="الخبر" :id="$post->id" />
     @endpush
 
 @endsection
