@@ -31,12 +31,12 @@ class PermissionSeeder extends Seeder
         }
 
         $admin = Role::firstOrCreate([
-            'name' => 'مدير',
+            'name' => 'admin',
             'guard_name' => 'web',
         ]);
 
         $user = Role::firstOrCreate([
-            'name' => 'مستخدم',
+            'name' => 'user',
             'guard_name' => 'web',
         ]);
 

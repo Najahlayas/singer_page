@@ -89,7 +89,7 @@ NewsArticle::factory(3)->create([
             'status' => 'active',
         ]);
 
-        $admin->assignRole('مدير');
+        $admin->assignRole('admin');
 
 
         // المستخدمون
@@ -130,7 +130,7 @@ NewsArticle::factory(3)->create([
                 'status' => 'active',
             ]);
 
-            $user->assignRole('مستخدم');
+            $user->assignRole('user');
         }
     }
 

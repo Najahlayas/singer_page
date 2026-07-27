@@ -7,6 +7,7 @@
 
     <div class="album-art-container">
 
+    @role('admin')
         <x-dropdown align="right" width="24">
 
             <x-slot name="trigger">
@@ -34,6 +35,7 @@
 
             </x-slot> </x-dropdown>
 
+                                    @endrole
 
 
         <div class="vinyl-record" :class="isPlaying ? 'spin' : ''">

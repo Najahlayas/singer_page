@@ -4,11 +4,16 @@
     الأخبار
 @endsection
 
+@section('title')
+    الأخبار
+@endsection
+
 @section('content')
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
 
         <x-header title="الأخبار" breadcrumb="الرئيسية / الأخبار">
 
+        @role('admin')
             <a href="{{ route('news.create') }}"
                 class="inline-flex items-center text-white bg-brand hover:bg-brand-strong border border-transparent shadow-xs font-medium rounded-base text-sm px-4 py-2.5">
 
@@ -17,14 +22,15 @@
 
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M16 2 L16 30 M2 16 L30 16" />
-
                 </svg>
+
 
                 <span class="flex-1 text-center whitespace-nowrap p-2">
                     اضف خبر جديد
                 </span>
 
             </a>
+            @endrole
 
         </x-header>
 

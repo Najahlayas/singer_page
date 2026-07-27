@@ -5,10 +5,14 @@
     الأعمال
 @endsection
 
+@section('title')
+    الأعمال
+@endsection
+
 @section('content')
     <div class="p-6 max-w-7xl mx-auto" dir="rtl">
 
-
+@role('admin')
         <x-header title="الأعمال" breadcrumb="الرئيسية / الأعمال">
 
             <x-actions-button target="create-work" />
@@ -85,6 +89,7 @@
             </form>
 
         </x-modal>
+@endrole
 
 
 
@@ -109,7 +114,7 @@
 
 
 
-
+    @role('admin')
                     {{-- Edit Modal --}}
                     <x-modal id="edit-work-{{ $work->id }}" title="تعديل العمل">
 
@@ -203,6 +208,8 @@
 
 
                     </x-modal>
+                                                        @endrole
+
                 @endforeach
 
 
