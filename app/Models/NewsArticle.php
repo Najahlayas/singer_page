@@ -12,14 +12,13 @@ class NewsArticle extends Model
 {
     use HasFactory;
     protected $table = "news";
-    protected $fillable = [
-        'image',
-        'title',
-        'body',
-        // 'created_at',
-        // 'updated_at',
-    ];
-
+   protected $fillable = [
+    'image',
+    'title',
+    'body',
+    'created_at',
+    'updated_at',
+];
 
 
   protected function image(): Attribute

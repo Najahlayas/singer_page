@@ -23,7 +23,7 @@
 // ======================
 // Modal Functions
 // ======================
-
+import ApexCharts from 'apexcharts';
 window.openModal = function(id) {
 
     const modal = document.getElementById(id);
@@ -103,23 +103,14 @@ const options = {
         },
     },
     series: [
-        {
-            name: "New users",
-            data: [6500, 6418, 6456, 6526, 6356, 6456],
-            color: brandColor,
-        },
-    ],
+    {
+        name: "News",
+        data: window.chartData || [],
+        color: brandColor,
+    },
+],
     xaxis: {
-        categories: [
-            "01 February",
-            "02 February",
-            "03 February",
-            "04 February",
-            "05 February",
-            "06 February",
-            "07 February",
-        ],
-        labels: {
+categories: window.chartLabels || [],        labels: {
             show: false,
         },
         axisBorder: {
@@ -134,15 +125,15 @@ const options = {
     },
 };
 
-if (
-    document.getElementById("area-chart") &&
-    typeof ApexCharts !== "undefined"
-) {
+if (document.getElementById("area-chart")) {
+
     const chart = new ApexCharts(
         document.getElementById("area-chart"),
-        options,
+        options
     );
+
     chart.render();
+
 }
 tailwind.config = {
     important: true,

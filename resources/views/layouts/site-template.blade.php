@@ -26,27 +26,41 @@
                         </div>
                     </div>
                     <x-dropdown align="left" width="48">
+
                         <x-slot name="trigger">
+
                             <div class="flex items-center">
-                                <span class="me-2 text-black text-sm font-medium">مرحبا، مستخدم</span>
+
+                                <span class="me-2 text-black text-sm font-medium">
+                                    مرحبا، {{ Auth::user()->name }}
+                                </span>
 
                                 <img class="w-8 h-8 rounded-full"
                                     src="https://flowbite.com/docs/images/people/profile-picture-5.jpg">
 
                             </div>
+
                         </x-slot>
+
                         <x-slot name="content">
+
                             <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 الملف الشخصي
                             </a>
+
+
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
+
                                 <button type="submit"
                                     class="block w-full text-right px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
                                     تسجيل الخروج
                                 </button>
+
                             </form>
+
                         </x-slot>
+
                     </x-dropdown>
                 </div>
             </div>

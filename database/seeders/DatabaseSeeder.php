@@ -133,4 +133,5 @@ NewsArticle::factory(3)->create([
             $user->assignRole('مستخدم');
         }
     }
+
 }
