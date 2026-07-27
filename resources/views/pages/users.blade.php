@@ -4,6 +4,12 @@
 @section('page-title')
     المستخدمون
 @endsection
+
+@section('title')
+    المستخدمون
+@endsection
+
+
 @section('content')
     <div class="p-6 max-w-7xl mx-auto" dir="rtl">
 

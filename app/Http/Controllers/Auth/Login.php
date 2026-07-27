@@ -42,6 +42,13 @@ class Login extends Controller
 
         // 4. Success
         $request->session()->regenerate();
-        return redirect()->intended('/dashboard');
+        if ($user->roles() == 'admin')
+            {
+                return redirect()->intended('/dashboard');
+            }
+        else
+            {
+                return redirect()->intended('/news');
+            }
     }
 }

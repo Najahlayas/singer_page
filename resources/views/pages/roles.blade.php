@@ -6,6 +6,10 @@
     الأدوار
 @endsection
 
+@section('title')
+    الأدوار
+@endsection
+
 @section('content')
 
 

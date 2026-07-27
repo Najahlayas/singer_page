@@ -6,6 +6,10 @@
     الصلاحيات
 @endsection
 
+@section('title')
+    الصلاحيات
+@endsection
+
 @section('content')
 
     <div class="p-6 max-w-7xl mx-auto" dir="rtl">

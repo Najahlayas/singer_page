@@ -1,7 +1,9 @@
 @extends('layouts.site-template')
 {{-- @extends('layouts.app') --}}
 
+
 @section('title', $post->title) {{-- Show the article title in the browser tab --}}
+@section('page-title', $post->title)
 
 @section('content')
     {{-- @section('page') --}}
@@ -14,6 +16,7 @@
         </a>
     </div>
 
+    @role('admin')
     <div class="flex flex-row gap-6">
 
         <a href="{{ route('news.edit', $post) }}"
@@ -25,19 +28,20 @@
             </svg>
 
             تعديل
-
         </a>
+
         <div class="flex items-center border border-red-200 rounded-md px-2 py-1 hover:bg-red-50 transition">
 
             <x-delete-form route="{{ route('news.destroy', $post->id) }}" type="الخبر" id="{{ $post->id }}" />
 
-            <span class="mr-1 text-xs text-red-600">
-                حذف
-            </span>
+                <span class="mr-1 text-xs text-red-600">
+                    حذف
+                </span>
+
+            </div>
 
         </div>
-
-    </div>
+        @endrole
     <div class="max-w-5xl mx-auto py-10 sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-10">
 
