@@ -32,15 +32,10 @@
                     تعديل
                 </a>
 
-                <div class="flex items-center border border-red-200 rounded-md px-2 py-1 hover:bg-red-50 transition">
-
-                    <x-delete-form route="{{ route('news.destroy', $post->id) }}" type="الخبر" id="{{ $post->id }}" />
-
-                    <span class="mr-1 text-xs text-red-600">
-                        حذف
-                    </span>
-
+                <div class="flex items-center w-full">
+                    <x-delete-form :route="route('news.destroy', $post->id)" type="الأخبار" :id="$post->id" label="حذف" />
                 </div>
+
 
             </div>
         @endrole
