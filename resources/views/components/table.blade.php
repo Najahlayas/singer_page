@@ -1,4 +1,4 @@
-<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-auto">
     <div class="overflow-x-auto">
         <table class="w-full text-right border-collapse">
             <thead>
