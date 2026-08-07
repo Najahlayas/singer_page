@@ -2,7 +2,7 @@
 @props(['work'])
 
 <div x-data="{ isPlaying: false }" class="vinyl-card max-w-full"
-    style="background-image: url('{{ $work->album_art }}'); background-size: cover; background-position: center;">
+    style="background-image: url('{{ asset('storage/' . $work->album_art) }}'); background-size: cover; background-position: center;">
 
 
     <div class="album-art-container">
@@ -40,7 +40,7 @@
 
         <div class="vinyl-record" :class="isPlaying ? 'spin' : ''">
 
-            <img src="{{ $work->song_image }}" alt="Vinyl Record" class="record-image">
+            <img src="{{ asset('storage/' . $work->song_image) }}" alt="Vinyl Record" class="record-image">
 
             <div class="record-center"></div>
 
@@ -80,7 +80,7 @@
 
 
         <audio @play="isPlaying = true" @pause="isPlaying = false" @ended="isPlaying = false" controls
-            src="{{ asset($work->audio_url) }}" class="audio-player h-auto max-w-full">
+            src="{{ asset('storage/' . $work->audio_url) }}" class="audio-player h-auto max-w-full">
         </audio>
 
 

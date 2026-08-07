@@ -1,7 +1,7 @@
 @props(['width' => '48'])
 
 <div class="relative w-fit" x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false">
-    <div @click="open = ! open" class="cursor-pointer">
+    <div @click="open = ! open" class="cursor-pointer pr-2">
         {{ $trigger }}
     </div>
 

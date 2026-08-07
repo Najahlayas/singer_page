@@ -21,9 +21,9 @@ class WorkController extends Controller
             [
                 'album_title' => 'required|string|max:255',
                 'song_title'  => 'required|string|max:255',
-                'album_art'   => 'required|url',
-                'song_image'  => 'required|url',
-                'audio_url'   => 'required|url',
+                'album_art'   => 'required|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'song_image'  => 'required|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'audio_url'   => 'required|file|mimes:mp3,wav,aac,ogg,m4a,mpga|max:2048',
             // ],
             // [
             //     'album_title.required' => 'حقل عنوان الألبوم مطلوب.',
@@ -37,7 +37,9 @@ class WorkController extends Controller
             //     'audio_url.url'  => 'يجب أن يكون رابط الأغنية صالحًا.',
             ]
         );
-
+        $validated["album_art"] = $request->file('album_art')->store('album_arts','public');
+        $validated["song_image"] = $request->file('song_image')->store('song_images','public');
+        $validated["audio_url"] = $request->file('audio_url')->store('audio_files','public');
         Work::create($validated);
 
 return redirect()
@@ -59,9 +61,9 @@ return redirect()
             [
                 'album_title' => 'required|string|max:255',
                 'song_title'  => 'required|string|max:255',
-                'album_art'   => 'required',
-                'song_image'  => 'required',
-                'audio_url'   => 'required',
+                'album_art'   => 'required|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'song_image'  => 'required|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'audio_url'   => 'required|file|mimes:mp3,wav,aac,ogg,m4a,mpga|max:2048',
             // ],
             // [
             //     'album_title.required' => 'حقل عنوان الألبوم مطلوب.',
@@ -75,7 +77,9 @@ return redirect()
             //     'audio_url.url'  => 'يجب أن يكون رابط الأغنية صالحًا.',
             ]
         );
-
+        $validated["album_art"] = $request->file('album_art')->store('album_arts','public');
+        $validated["song_image"] = $request->file('song_image')->store('song_images','public');
+        $validated["audio_url"] = $request->file('audio_url')->store('audio_files','public');
         $work->update($validated);
 
         return redirect()->back()->with('success', 'تم تحديث العمل بنجاح!');

@@ -24,7 +24,7 @@
             {{-- Add Work Modal --}}
             <x-modal id="create-work" title="إضافة عمل">
 
-                <form action="{{ route('works.store') }}" method="POST">
+                <form action="{{ route('works.store') }}" method="POST" enctype="multipart/form-data">
 
                     @csrf
 
@@ -51,30 +51,30 @@
 
                     <div class="mb-3">
                         <label class="block mb-1 text-sm">
-                            رابط صورة الاغنية
+                            صورة الاغنية
                         </label>
 
-                        <input type="url" name="song_image" class="w-full border rounded-lg p-2" required>
+                        <input type="file" name="song_image" class="w-full border rounded-lg p-2" required accept="image/*">
                     </div>
 
 
 
                     <div class="mb-3">
                         <label class="block mb-1 text-sm">
-                            رابط صورة الالبوم
+                        صورة الالبوم
                         </label>
 
-                        <input type="url" name="album_art" class="w-full border rounded-lg p-2" required>
+                        <input type="file" name="album_art" class="w-full border rounded-lg p-2" required accept="image/*">
                     </div>
 
 
 
                     <div class="mb-3">
                         <label class="block mb-1 text-sm">
-                            رابط الاغنية
+                        الاغنية
                         </label>
 
-                        <input type="url" name="audio_url" class="w-full border rounded-lg p-2" required>
+                        <input type="file" name="audio_url" class="w-full border rounded-lg p-2" required accept="audio/*">
                     </div>
 
 
@@ -119,7 +119,7 @@
                         <x-modal id="edit-work-{{ $work->id }}" title="تعديل العمل">
 
 
-                            <form action="{{ route('works.update', $work->id) }}" method="POST">
+                            <form action="{{ route('works.update', $work->id) }}" method="POST" enctype="multipart/form-data">
 
 
                                 @csrf
@@ -148,7 +148,7 @@
                                     </label>
 
                                     <input type="text" name="song_title" value="{{ $work->song_title }}"
-                                        class="w-full border rounded-lg p-2" required>
+                                        class="w-full border rounded-lg p-2" required >
 
                                 </div>
 
@@ -158,11 +158,11 @@
                                 <div class="mb-3">
 
                                     <label class="block mb-1 text-sm">
-                                        رابط صورة الاغنية
+                                    صورة الاغنية
                                     </label>
 
-                                    <input type="url" name="song_image" value="{{ $work->song_image }}"
-                                        class="w-full border rounded-lg p-2" required>
+                                    <input type="file" name="song_image" value="{{ $work->song_image }}"
+                                        class="w-full border rounded-lg p-2" required accept="image/*">
 
                                 </div>
 
@@ -172,11 +172,11 @@
                                 <div class="mb-3">
 
                                     <label class="block mb-1 text-sm">
-                                        رابط صورة الالبوم
+                                        صورة الالبوم
                                     </label>
 
-                                    <input type="url" name="album_art" value="{{ $work->album_art }}"
-                                        class="w-full border rounded-lg p-2" required>
+                                    <input type="file" name="album_art" value="{{ $work->album_art }}"
+                                        class="w-full border rounded-lg p-2" required accept="image/*">
 
                                 </div>
 
@@ -189,8 +189,8 @@
                                         رابط الاغنية
                                     </label>
 
-                                    <input type="url" name="audio_url" value="{{ $work->audio_url }}"
-                                        class="w-full border rounded-lg p-2" required>
+                                    <input type="file" name="audio_url" value="{{ $work->audio_url }}"
+                                        class="w-full border rounded-lg p-2" required accept="audio/*">
 
                                 </div>
 
