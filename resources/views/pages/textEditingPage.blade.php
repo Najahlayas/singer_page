@@ -35,7 +35,7 @@
                 @if (isset($post) && $post->image)
                     <div class="mb-2">
                         <p class="text-sm text-gray-500 mb-1">الصورة الحالية:</p>
-                        <img src="{{ $post->image }}" class="w-32 h-20 object-cover rounded border">
+                        <img src="{{ asset($post->image) }}" class="w-32 h-20 object-cover rounded border">
                     </div>
                 @endif
 

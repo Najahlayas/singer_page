@@ -44,7 +44,7 @@
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-10">
 
             {{-- 1. Large Image --}}
-            <img class="w-full h-auto rounded-base mb-8" src="{{ $post->image }}" alt="{{ $post->title }}" />
+            <img class="w-full h-auto rounded-base mb-8" src="{{ asset($post->image) }}" alt="{{ $post->title }}" />
 
             {{-- 2. Title --}}
             <h1 class="sm:text-4xl text-2xl font-bold text-heading mb-6">{{ $post->title }}</h1>

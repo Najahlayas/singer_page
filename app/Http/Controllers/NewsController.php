@@ -43,12 +43,9 @@ class NewsController extends Controller
     ]
 );
 
-        if ($request->hasFile('image')) {
 
-            $data['image'] = $request->file('image')
-                ->store('news', 'public');
+    $data['image'] = $request->file('image')->store('news', 'public');
 
-        }
 
 
         NewsArticle::create($data);

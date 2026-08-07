@@ -1,8 +1,6 @@
 @props(['post'])
 <div class="bg-neutral-primary-soft w-full p-6 border border-default rounded-base shadow-xs"> {{-- <a href="#"> --}}
-    <img class="w-full h-56 object-cover rounded-base" src="{{ $post->image }}" alt="{{ $post->title }}">
-    {{-- <img class="rounded-base" src="{{ Storage::url($post->image) }}" alt="card image" /> --}}
-    {{-- </a> --}}
+    <img class="w-full h-56 object-cover rounded-base" src="{{ asset($post->image) }}" alt="{{ $post->title }}">
     <h5 class="mt-6 mb-2 text-2xl font-semibold tracking-tight text-heading line-clamp-1 leading-normal overflow-hidden">
         {{ $post->title }}</h5>
     <div class="line-clamp-3 leading-normal overflow-hidden">
